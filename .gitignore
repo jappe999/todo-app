@@ -1,3 +1,6 @@
+# Config
+/config/database.php
+
 # Logs
 logs
 *.log
