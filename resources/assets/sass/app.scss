@@ -1,0 +1,74 @@
+// @import "base.scss";
+@import "_variables.scss";
+@import "_fonts.scss";
+@import "_elements.scss";
+@import "_classes.scss";
+
+html,
+body {
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    margin:0;
+    padding:0;
+    background-color:$light_color;
+    font-family:$main_font;
+}
+
+a {
+    color:$darkened_app_color;
+    text-decoration:none;
+    &:hover {
+        border-bottom:thin $darkened_app_color solid;
+    }
+}
+
+#app {
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+
+    h1, h2, h3, h4, h5, h6 {
+        // font-family:$title_font;
+    }
+
+    > header {
+        width:$header_width;
+        position:absolute;
+        top:0;
+        left:0;
+        padding:$header_padding_top_bottom $header_padding_left_right;
+        background-color:$app_color;
+    }
+
+    > main {
+        width:$main_width;
+        padding:$main_padding_top_bottom $main_padding_left_right;
+
+        // Scrollable content
+        .todo_items_wrapper {
+            width:100%;
+            max-width:500px;
+            margin:auto;
+        }
+    }
+
+    > footer {
+        width:90%;
+        position:fixed;
+        left:0;
+        bottom:0;
+        padding:12px 5%;
+        display:flex;
+        justify-content:center;
+
+        #footer_inner {
+            width:100%;
+            max-width:500px;
+        }
+    }
+}

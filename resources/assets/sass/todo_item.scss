@@ -1,0 +1,46 @@
+@import "_variables.scss";
+
+.todo_item {
+    width:100%;
+    margin:12px 0;
+    background:white;
+    display:flex;
+    align-items:stretch;
+    > * {
+        min-width:76px;
+        margin:0;
+        border-radius:0;
+        border:0;
+        padding:$todo_item_padding_top_bottom $todo_item_padding_left_right;
+        width:100%;
+        font-size:12px;
+        word-wrap:break-word;
+    }
+    > input {
+        flex:4;
+    }
+    > button {
+        flex:1;
+        background:$app_color;
+        color:$light_color;
+        cursor:pointer;
+        &:hover {
+            background:$darkened_app_color;
+        }
+        + button {
+            border-left:medium $darkened_app_color solid;
+        }
+    }
+
+    &#new_todo {
+        margin-bottom:48px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .todo_item {
+        > * {
+            padding:$todo_item_padding_top_bottom / 1.2 $todo_item_padding_left_right / 1.5;
+        }
+    }
+}

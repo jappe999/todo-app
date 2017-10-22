@@ -1,0 +1,27 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "Todo app for a school assignment",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jappe999/todo-app.git"
+  },
+  "author": "Jasper van der Linden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jappe999/todo-app/issues"
+  },
+  "homepage": "https://github.com/jappe999/todo-app#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "laravel-mix": "^1.5.0",
+    "vue": "^2.4.4"
+  }
+}

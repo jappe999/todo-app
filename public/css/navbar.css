@@ -1,0 +1,59 @@
+#navbar {
+  color: white;
+}
+
+#navbar #hamburger {
+  height: 2px;
+  width: 24px;
+  margin: 10px 0;
+  position: relative;
+  display: none;
+  visibility: hidden;
+  float: left;
+  background-color: #EEEEEE;
+}
+
+#navbar #hamburger::before,
+#navbar #hamburger::after {
+  height: 2px;
+  width: 24px;
+  content: '';
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-color: #EEEEEE;
+}
+
+#navbar #hamburger::before {
+  bottom: 8px;
+}
+
+#navbar #hamburger::after {
+  top: 8px;
+}
+
+#navbar ul {
+  float: left;
+  padding: 0;
+  margin: 0 0 0 -16px;
+}
+
+#navbar ul li {
+  display: inline-block;
+  list-style-type: none;
+}
+
+#navbar ul li a {
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 750px) {
+  #navbar #hamburger {
+    visibility: visible;
+    display: block;
+  }
+}
+

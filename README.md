@@ -1,2 +1,2 @@
 # todo-app
-Simple todo app for a school assignment
+A simple todo app for a school assignment

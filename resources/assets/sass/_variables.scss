@@ -1,0 +1,30 @@
+// Colors
+$app_color: #348CB2;
+$darkened_app_color: darken($app_color, 5%);
+$accent_color: #8AD6B2;
+$red_color: #AA0A0A;
+$dark_color: #100C05;
+$light_color: #EEEEEE;
+
+// Fonts
+$title_font: "Open Sans Condensed", sans-serif;
+$main_font: "Open Sans", sans-serif;
+
+// Sizes
+$header_height: 22px;
+$header_width: 90%;
+$header_padding_top_bottom: 16px;
+$header_padding_left_right: (100% - $header_width) / 2;
+
+$hamburger_height: 20px;
+$hamburger_width: 24px;
+$hamburger__component_height: 2px;
+$hamburger__component_width: $hamburger_width;
+
+$main_height: calc(100% - #{$header_height} - (#{$header_padding_top_bottom} * 2));
+$main_width: 90%;
+$main_padding_top_bottom: $header_height + ($header_padding_top_bottom * 2);
+$main_padding_left_right: (100% - $main_width) / 2;
+
+$todo_item_padding_top_bottom: 18px;
+$todo_item_padding_left_right: 30px;

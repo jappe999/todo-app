@@ -1,0 +1,57 @@
+@import "_variables.scss";
+
+#navbar {
+    color:white;
+
+    #hamburger {
+        height:$hamburger__component_height;
+        width:$hamburger_width;
+        margin:$hamburger_height / 2 0;
+        position:relative;
+        display:none;
+        visibility:hidden;
+        float:left;
+        background-color:$light_color;
+        &::before,
+        &::after {
+            height:$hamburger__component_height;
+            width:$hamburger__component_width;
+            content:'';
+            height:2px;
+            width:100%;
+            position:absolute;
+            left:0;
+            background-color:$light_color;
+        }
+        &::before {
+            bottom:$hamburger_height / 2 - $hamburger__component_height;
+        }
+        &::after {
+            top:$hamburger_height / 2 - $hamburger__component_height;
+        }
+    }
+
+    ul {
+        float:left;
+        padding:0;
+        margin:0 0 0 -16px;
+        li {
+            display:inline-block;
+            list-style-type:none;
+            a {
+                padding:12px 16px;
+                color:white;
+                text-decoration:none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:750px) {
+    #navbar {
+        #hamburger {
+            visibility:visible;
+            display:block;
+        }
+    }
+}

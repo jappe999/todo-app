@@ -1,0 +1,11 @@
+#!/usr/bin/php
+<?php
+
+if (count($argv) > 1) {
+	$port = $argv[1];
+} else {
+	$port = 6680;
+}
+
+exec("php -S localhost:$port -t public");
+exec("open http://localhost:$port");
