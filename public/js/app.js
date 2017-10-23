@@ -13665,13 +13665,16 @@ exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'popup',
   props: ['item', 'is_open'],
   data: function data() {
     return {
       title_edit: false,
-      description_edit: false
+      description_edit: false,
+      files_to_upload: []
     };
   },
 
@@ -13710,6 +13713,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     edit_description: function edit_description() {
       this.description_edit = true;
       this.title_edit = false;
+    },
+    select_files: function select_files(event) {
+      var file_input = this.$refs.file_upload;
+      file_input.click();
+    },
+    set_files: function set_files() {
+      var file_input = this.$refs.file_upload,
+          files = file_input.files;
+      this.files_to_upload = [];
+      for (var file in files) {
+        if (_typeof(files[file]) === 'object') this.files_to_upload.push(files[file].name);
+      }
+    },
+    upload_files: function upload_files() {
+      var file_input = this.$refs.file_upload,
+          files = file_input.files;
+
+      if (files.length < 1) return;
+
+      axios.post('/api/files/upload', files).then(function (response) {
+        console.log(response);
+      }).catch(function (err) {
+        console.error(err);
+      });
     },
     close_all: function close_all(event) {
       // Check if clicked element isn't the below and if some are open.
@@ -13861,23 +13888,39 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "popup__files__upload" }, [
               _c("input", {
+                ref: "file_upload",
                 staticClass: "popup__files__upload_input",
-                attrs: { type: "file", value: "Upload files" }
+                attrs: { type: "file", multiple: "" },
+                on: { change: _vm.set_files }
               }),
               _vm._v(" "),
-              _c("div", { staticClass: "popup__files__upload_area" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.file_name) +
-                    "\n                "
-                )
-              ]),
+              _c(
+                "div",
+                {
+                  staticClass: "popup__files__upload_area",
+                  on: { click: _vm.select_files }
+                },
+                [
+                  _c("span", [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.files_to_upload.join(", ")) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  !_vm.files_to_upload
+                    ? _c("span", [_vm._v("Click here to select files")])
+                    : _vm._e()
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "button",
                 {
                   staticClass: "popup__files__upload_button",
-                  attrs: { type: "button" }
+                  attrs: { type: "button" },
+                  on: { click: _vm.upload_files }
                 },
                 [_vm._v("Upload")]
               )

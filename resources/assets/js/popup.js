@@ -4,7 +4,8 @@ export default {
   data() {
     return {
       title_edit: false,
-      description_edit: false
+      description_edit: false,
+      files_to_upload: []
     }
   },
   methods: {
@@ -45,6 +46,34 @@ export default {
     edit_description() {
       this.description_edit = true;
       this.title_edit = false;
+    },
+    select_files(event) {
+      var file_input = this.$refs.file_upload;
+      file_input.click();
+    },
+    set_files() {
+      var file_input = this.$refs.file_upload,
+          files      = file_input.files;
+      this.files_to_upload = [];
+      for (var file in files) {
+        if (typeof files[file] === 'object')
+          this.files_to_upload.push(files[file].name);
+      }
+    },
+    upload_files() {
+      var file_input = this.$refs.file_upload,
+          files      = file_input.files;
+
+      if (files.length < 1)
+        return;
+
+      axios.post('/api/files/upload', files)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.error(err);
+      })
     },
     close_all(event) {
       // Check if clicked element isn't the below and if some are open.

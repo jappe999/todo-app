@@ -40,11 +40,14 @@
 
                 </div>
                 <div class="popup__files__upload">
-                    <input class="popup__files__upload_input" type="file" value="Upload files">
-                    <div class="popup__files__upload_area">
-                        {{ file_name }}
+                    <input class="popup__files__upload_input" ref="file_upload" type="file" @change="set_files" multiple>
+                    <div class="popup__files__upload_area" @click="select_files">
+                        <span>
+                            {{ files_to_upload.join(', ') }}
+                        </span>
+                        <span v-if="!files_to_upload">Click here to select files</span>
                     </div>
-                    <button type="button" class="popup__files__upload_button">Upload</button>
+                    <button type="button" class="popup__files__upload_button" @click="upload_files">Upload</button>
                 </div>
             </div>
 
