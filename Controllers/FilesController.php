@@ -43,4 +43,29 @@ class FilesController extends Controller
 
         return json_encode(compact('status', 'data'));
     }
+
+    public function getFile($fileId)
+    {
+        $query = "SELECT content FROM files
+                  WHERE id=:id";
+        $stmt  = DB::prepare($query);
+
+        $stmt->bindParam(':id', $fileId);
+        $stmt->execute();
+
+        $content = $stmt->fetch()['content'];
+        $content = substr($content, 5);
+
+        // Strip base64 content and set header.
+        $content = preg_replace_callback(
+                       '/^([a-z0-9\-\_]+\/[a-z0-9\-\_]+)(;base64,){1}/',
+                       function($matches) {
+                           header("Content-Type:" . $matches[1]);
+                           return '';
+                       },
+                       $content
+                   );
+
+        return base64_decode($content);
+    }
 }

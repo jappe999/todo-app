@@ -5,7 +5,7 @@
             <div class="popup__close" @click="close_popup" title="Close">
                 <i class="fa fa-times fa-2x"></i>
             </div>
-            <div class="popup__title" @click="edit_title" id="edit_title">
+            <div class="popup__title" @click="edit_title" id="edit_title" title="Edit title">
                 <h2 v-if="!this.title_edit">
                     {{ item.title }}
                 </h2>
@@ -13,7 +13,7 @@
                        @keypress.enter="update_item" />
             </div>
             <main class="popup__content">
-                <div v-if="!this.description_edit" @click="edit_description" class="popup__description">
+                <div v-if="!this.description_edit" @click="edit_description" class="popup__description" title="Edit description">
                     <span v-if="this.item.description">
                         {{ item.description }}
                     </span>
@@ -58,7 +58,9 @@
                     </div>
                 </div>
 
-                <button class="popup__item_delete" type="button" title="Delete todo item">Delete</button>
+                <button class="popup__item_delete" type="button" title="Delete todo item">
+                    Delete task
+                </button>
             </main>
         </div>
     </div>

@@ -13664,7 +13664,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n  overflow-y: auto;\n  z-index: 999;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    min-height: 50%;\n    width: calc(90% - 72px);\n    max-width: 600px;\n    position: relative;\n    top: -16px;\n    margin: auto;\n    padding: 12px 36px 24px;\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n    overflow: hidden;\n}\n.popup_wrapper .popup.active {\n      top: 32px;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__content {\n      max-height: calc(100% - 128px);\n      margin-bottom: 64px;\n      overflow-y: auto;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files .file {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: stretch;\n            -ms-flex-align: stretch;\n                align-items: stretch;\n}\n.popup_wrapper .popup__files .file__name {\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          margin: 8px 0;\n          padding: 18px 15px;\n          color: black;\n          border: thin #aaa solid;\n          border-right-width: 0;\n}\n.popup_wrapper .popup__files .file__delete {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          margin: 8px 0;\n          padding: 18px 15px;\n          background: #AA0A0A;\n          color: white;\n          border: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload {\n        margin-top: 16px;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          border: thin #aaa solid;\n          border-right-width: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          color: white;\n          cursor: pointer;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      right: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n@media screen and (max-width: 450px) {\n.popup_wrapper .popup {\n    width: calc(90% - 48px);\n    padding: 12px 24px 24px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n  overflow-y: auto;\n  z-index: 999;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    min-height: 50%;\n    width: calc(90% - 72px);\n    max-width: 600px;\n    position: relative;\n    top: -16px;\n    margin: auto;\n    padding: 12px 36px 24px;\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n    overflow: hidden;\n}\n.popup_wrapper .popup.active {\n      top: 32px;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__content {\n      max-height: calc(100% - 128px);\n      margin-bottom: 64px;\n      overflow-y: auto;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files .file {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: stretch;\n            -ms-flex-align: stretch;\n                align-items: stretch;\n}\n.popup_wrapper .popup__files .file__name {\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          margin: 8px 0;\n          padding: 18px 15px;\n          color: black;\n          border: thin #aaa solid;\n          border-right-width: 0;\n}\n.popup_wrapper .popup__files .file__delete {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          margin: 8px 0;\n          padding: 18px 15px;\n          background: #AA0A0A;\n          color: white;\n          border: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload {\n        margin-top: 16px;\n        margin-bottom: 32px;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          border: thin #aaa solid;\n          border-right-width: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          color: white;\n          cursor: pointer;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      left: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n@media screen and (max-width: 450px) {\n.popup_wrapper .popup {\n    width: calc(90% - 48px);\n    padding: 12px 24px 24px;\n}\n}\n", ""]);
 
 // exports
 
@@ -13729,7 +13729,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       file_input.click();
     },
 
-    // Set filenames
+    // Set filenames in fileinput
     set_files: function set_files() {
       var file_input = this.$refs.file_upload,
           files = file_input.files;
@@ -13776,29 +13776,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       };
 
       // Read each file as a base64 blob.
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var file = _step.value;
-
-          reader.readAsDataURL(file);
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
+      for (var file in files) {
+        var file = files[file];
+        reader.readAsDataURL(file);
       }
     },
     close_all: function close_all(event) {
@@ -13852,7 +13832,7 @@ var render = function() {
             "div",
             {
               staticClass: "popup__title",
-              attrs: { id: "edit_title" },
+              attrs: { id: "edit_title", title: "Edit title" },
               on: { click: _vm.edit_title }
             },
             [
@@ -13902,6 +13882,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "popup__description",
+                    attrs: { title: "Edit description" },
                     on: { click: _vm.edit_description }
                   },
                   [
@@ -14037,7 +14018,7 @@ var render = function() {
                 staticClass: "popup__item_delete",
                 attrs: { type: "button", title: "Delete todo item" }
               },
-              [_vm._v("Delete")]
+              [_vm._v("\n                Delete task\n            ")]
             )
           ])
         ]

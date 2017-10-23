@@ -105,6 +105,7 @@
 
             &__upload {
                 margin-top:16px;
+                margin-bottom:32px;
                 width:100%;
                 display:flex;
                 align-content:stretch;
@@ -134,7 +135,7 @@
         &__item_delete {
           position:absolute;
           bottom:24px;
-          right:36px;
+          left:36px;
           padding:$todo_item_padding_top_bottom $todo_item_padding_left_right;
           background:$red_color;
           color:white;

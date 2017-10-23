@@ -51,7 +51,7 @@ export default {
       var file_input = this.$refs.file_upload;
       file_input.click();
     },
-    // Set filenames
+    // Set filenames in fileinput
     set_files() {
       var file_input = this.$refs.file_upload,
           files      = file_input.files;
@@ -103,7 +103,8 @@ export default {
       };
 
       // Read each file as a base64 blob.
-      for (var file of files) {
+      for (var file in files) {
+        var file = files[file];
         reader.readAsDataURL(file);
       }
     },
