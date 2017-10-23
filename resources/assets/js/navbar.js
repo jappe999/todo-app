@@ -1,15 +1,14 @@
 export default {
   name: "navbar",
+  props: ['user'],
   data() {
     return {
-      user: {
-        'name': 'jappe'
-      }
+        welcome_message: 'Hello'
     }
   },
   methods: {
     init() {
-      
+
     }
   }
 };

@@ -21,6 +21,7 @@
   "homepage": "https://github.com/jappe999/todo-app#readme",
   "dependencies": {
     "axios": "^0.16.2",
+    "caniuse-lite": "^1.0.30000749",
     "laravel-mix": "^1.5.0",
     "vue": "^2.4.4"
   }

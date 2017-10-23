@@ -16,10 +16,11 @@ class UsersController extends Controller
             $userId = $_SESSION['id'];
 
         if (!empty($userId))
-            $user = User::byId($userId)->getAll();
+            $data = User::byId($userId)->getAll();
         else
-            $user = [];
+            $data = [];
 
-        return json_encode($user);
+        $status = 'success';
+        return json_encode(compact('status', 'data'));
     }
 }

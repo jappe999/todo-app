@@ -3,7 +3,7 @@
 @section('body')
     <div id="app">
         <header>
-            <navbar></navbar>
+            <navbar :user="user"></navbar>
         </header>
         <main>
             <div class="todo_items_wrapper">

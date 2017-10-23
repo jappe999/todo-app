@@ -9,7 +9,7 @@
         <div class="pull-right">
             <ul>
                 <li>
-                    Hello {{ user['name'] }}
+                    {{ welcome_message }} {{ user.name }}
                 </li>
                 <li>
                     <a href="/logout">Logout</a>
