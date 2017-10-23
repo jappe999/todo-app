@@ -166,6 +166,10 @@ class User
             return false;
 
         $userId = $_SESSION['id'];
+
+        if (empty($userId))
+            return false;
+
         self::byId($userId);
 
         return (!empty(self::$user) && CSRF::verify());

@@ -12,10 +12,14 @@ class UsersController extends Controller
 
     public function getUser($userId)
     {
-        if ($userId === 'me') {
+        if ($userId === 'me')
             $userId = $_SESSION['id'];
-        }
-        $user = User::byId($userId)->getAll();
+
+        if (!empty($userId))
+            $user = User::byId($userId)->getAll();
+        else
+            $user = [];
+
         return json_encode($user);
     }
 }
