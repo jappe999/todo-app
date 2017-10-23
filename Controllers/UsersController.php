@@ -10,17 +10,27 @@ use Models\User as User;
 class UsersController extends Controller
 {
 
-    public function getUser($userId)
+    /**
+     * Get the user's id, name and e-mail.
+     *
+     * @param int $userId
+     * @return string
+     */
+    public function getUser(int $userId): string
     {
         if ($userId === 'me')
             $userId = $_SESSION['id'];
 
-        if (!empty($userId))
-            $data = User::byId($userId)->getAll();
-        else
-            $data = [];
+        if (!empty($userId)) {
+            $status   = 'success';
+            $data     = User::byId($userId)->getAll();
+            $response = compact('status', 'data');
+        } else {
+            $status   = "error";
+            $error    = "User id cannot be empty.";
+            $response = compact('status', 'error');
+        }
 
-        $status = 'success';
-        return json_encode(compact('status', 'data'));
+        return json_encode($response);
     }
 }
