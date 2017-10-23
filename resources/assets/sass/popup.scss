@@ -10,6 +10,7 @@
     opacity:0;
     transition:opacity .3s, visibility .3s 0s;
     overflow-y:auto;
+    z-index:999;
 
     .popup_background {
         height:100%;
@@ -68,6 +69,7 @@
 
         &__content {
             max-height:calc(100% - 128px);
+            margin-bottom:64px;
             overflow-y:auto;
         }
 
@@ -78,7 +80,31 @@
         &__files {
             width:100%;
             margin:16px 0;
+
+            .file {
+                display:flex;
+                align-items:stretch;
+                &__name {
+                    flex:5;
+                    margin:8px 0;
+                    padding:$todo_item_padding_top_bottom $todo_item_padding_left_right / 2;
+                    color:black;
+                    border:thin #aaa solid;
+                    border-right-width:0;
+                }
+                &__delete {
+                    flex:1;
+                    margin:8px 0;
+                    padding:$todo_item_padding_top_bottom $todo_item_padding_left_right / 2;
+                    background:$red_color;
+                    color:white;
+                    border:0;
+                    cursor:pointer;
+                }
+            }
+
             &__upload {
+                margin-top:16px;
                 width:100%;
                 display:flex;
                 align-content:stretch;
@@ -87,17 +113,20 @@
                 }
                 &_area {
                     width:100%;
-                    padding:$todo_item_padding_top_bottom $todo_item_padding_left_right;
-                    flex:3;
+                    padding:$todo_item_padding_top_bottom $todo_item_padding_left_right / 2;
+                    flex:5;
                     border:thin #aaa solid;
+                    border-right-width:0;
+                    cursor:pointer;
                 }
                 &_button {
                     width:100%;
-                    padding:$todo_item_padding_top_bottom $todo_item_padding_left_right;
+                    padding:$todo_item_padding_top_bottom $todo_item_padding_left_right / 2;
                     flex:1;
                     background:#298E84;
                     border:0;
                     color:white;
+                    cursor:pointer;
                 }
             }
         }
@@ -110,6 +139,15 @@
           background:$red_color;
           color:white;
           border:0;
+        }
+    }
+}
+
+@media screen and (max-width:450px) {
+    .popup_wrapper {
+        .popup {
+            width:calc(90% - 48px);
+            padding:12px 24px 24px;
         }
     }
 }

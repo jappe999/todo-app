@@ -13664,7 +13664,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n  overflow-y: auto;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    min-height: 50%;\n    width: calc(90% - 72px);\n    max-width: 600px;\n    position: relative;\n    top: -16px;\n    margin: auto;\n    padding: 12px 36px 24px;\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n    overflow: hidden;\n}\n.popup_wrapper .popup.active {\n      top: 32px;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__content {\n      max-height: calc(100% - 128px);\n      overflow-y: auto;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files__upload {\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 30px;\n          -webkit-box-flex: 3;\n              -ms-flex: 3;\n                  flex: 3;\n          border: thin #aaa solid;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 30px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          color: white;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      right: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n", ""]);
+exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n  overflow-y: auto;\n  z-index: 999;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    min-height: 50%;\n    width: calc(90% - 72px);\n    max-width: 600px;\n    position: relative;\n    top: -16px;\n    margin: auto;\n    padding: 12px 36px 24px;\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n    overflow: hidden;\n}\n.popup_wrapper .popup.active {\n      top: 32px;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__content {\n      max-height: calc(100% - 128px);\n      margin-bottom: 64px;\n      overflow-y: auto;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files .file {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: stretch;\n            -ms-flex-align: stretch;\n                align-items: stretch;\n}\n.popup_wrapper .popup__files .file__name {\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          margin: 8px 0;\n          padding: 18px 15px;\n          color: black;\n          border: thin #aaa solid;\n          border-right-width: 0;\n}\n.popup_wrapper .popup__files .file__delete {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          margin: 8px 0;\n          padding: 18px 15px;\n          background: #AA0A0A;\n          color: white;\n          border: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload {\n        margin-top: 16px;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          border: thin #aaa solid;\n          border-right-width: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          color: white;\n          cursor: pointer;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      right: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n@media screen and (max-width: 450px) {\n.popup_wrapper .popup {\n    width: calc(90% - 48px);\n    padding: 12px 24px 24px;\n}\n}\n", ""]);
 
 // exports
 
@@ -13956,11 +13956,33 @@ var render = function() {
                 _c("b", [_vm._v("Files")]),
                 _vm._v(" "),
                 _vm._l(_vm.files, function(file) {
-                  return _c("div", { staticClass: "popup__files__file" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(file.name) +
-                        "\n                "
+                  return _c("div", { staticClass: "file" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "file__name",
+                        attrs: { href: "/api/files/get/" + file.id }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(file.name) +
+                            "\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "file__delete",
+                        attrs: { role: "button" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Delete file\n                    "
+                        )
+                      ]
                     )
                   ])
                 }),
