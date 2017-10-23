@@ -3,14 +3,11 @@
         <!-- <div id="hamburger" class="pull-right" @click="toggle_menu"></div> -->
         <ul>
             <li>
-
+                <a href="/">Todo app</a>
             </li>
         </ul>
         <div class="pull-right">
             <ul>
-                <li>
-                    {{ welcome_message }} {{ user.name }}
-                </li>
                 <li>
                     <a href="/logout">Logout</a>
                 </li>

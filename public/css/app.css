@@ -62,7 +62,7 @@ form button {
 }
 
 .form {
-  width: 40%;
+  width: 90%;
   max-width: 560px;
 }
 
@@ -72,6 +72,13 @@ form button {
 
 .right {
   float: right;
+}
+
+@media screen and (max-height: 800px) {
+  .center-top {
+    -webkit-transform: translateX(-50%) translateY(-45%);
+            transform: translateX(-50%) translateY(-45%);
+  }
 }
 
 html,
@@ -136,6 +143,7 @@ a:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background: #EEEEEE;
 }
 
 #app > footer #footer_inner {

@@ -11,7 +11,7 @@
 }
 
 .form {
-    width:40%;
+    width:90%;
     max-width:560px;
 }
 
@@ -21,4 +21,10 @@
 
 .right {
     float:right;
+}
+
+@media screen and (max-height:800px) {
+    .center-top {
+        transform:translateX(-50%) translateY(-45%);
+    }
 }

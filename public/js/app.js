@@ -13269,7 +13269,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n#navbar {\n  color: white;\n}\n#navbar #hamburger {\n    height: 2px;\n    width: 24px;\n    margin: 10px 0;\n    position: relative;\n    display: none;\n    visibility: hidden;\n    float: left;\n    background-color: #EEEEEE;\n}\n#navbar #hamburger::before, #navbar #hamburger::after {\n      height: 2px;\n      width: 24px;\n      content: '';\n      height: 2px;\n      width: 100%;\n      position: absolute;\n      left: 0;\n      background-color: #EEEEEE;\n}\n#navbar #hamburger::before {\n      bottom: 8px;\n}\n#navbar #hamburger::after {\n      top: 8px;\n}\n#navbar ul {\n    float: left;\n    padding: 0;\n    margin: 0 0 0 -16px;\n}\n#navbar ul li {\n      display: inline-block;\n      list-style-type: none;\n}\n#navbar ul li a {\n        padding: 12px 16px;\n        color: white;\n        text-decoration: none;\n}\n@media screen and (max-width: 750px) {\n#navbar #hamburger {\n    visibility: visible;\n    display: block;\n}\n}\n", ""]);
+exports.push([module.i, "\n#navbar {\n  color: white;\n}\n#navbar #hamburger {\n    height: 2px;\n    width: 24px;\n    margin: 10px 0;\n    position: relative;\n    display: none;\n    visibility: hidden;\n    float: left;\n    background-color: #EEEEEE;\n}\n#navbar #hamburger::before, #navbar #hamburger::after {\n      height: 2px;\n      width: 24px;\n      content: '';\n      height: 2px;\n      width: 100%;\n      position: absolute;\n      left: 0;\n      background-color: #EEEEEE;\n}\n#navbar #hamburger::before {\n      bottom: 8px;\n}\n#navbar #hamburger::after {\n      top: 8px;\n}\n#navbar ul {\n    float: left;\n    padding: 0;\n    margin: 0;\n}\n#navbar ul li {\n      display: inline-block;\n      list-style-type: none;\n}\n#navbar ul li a {\n        padding: 12px 16px;\n        color: white;\n        text-decoration: none;\n}\n@media screen and (max-width: 750px) {\n#navbar #hamburger {\n    visibility: visible;\n    display: block;\n}\n}\n", ""]);
 
 // exports
 
@@ -13335,39 +13335,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { attrs: { id: "navbar" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "pull-right" }, [
-      _c("ul", [
-        _c("li", [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.welcome_message) +
-              " " +
-              _vm._s(_vm.user.name) +
-              "\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _vm._m(1)
-      ])
-    ])
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", [_c("li")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+    return _c("nav", { attrs: { id: "navbar" } }, [
+      _c("ul", [
+        _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("Todo app")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pull-right" }, [
+        _c("ul", [
+          _c("li", [
+            _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -13664,7 +13650,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n  overflow-y: auto;\n  z-index: 999;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    min-height: 50%;\n    width: calc(90% - 72px);\n    max-width: 600px;\n    position: relative;\n    top: -16px;\n    margin: auto;\n    padding: 12px 36px 24px;\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n    overflow: hidden;\n}\n.popup_wrapper .popup.active {\n      top: 32px;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__content {\n      max-height: calc(100% - 128px);\n      margin-bottom: 64px;\n      overflow-y: auto;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files .file {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: stretch;\n            -ms-flex-align: stretch;\n                align-items: stretch;\n}\n.popup_wrapper .popup__files .file__name {\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          margin: 8px 0;\n          padding: 18px 15px;\n          color: black;\n          border: thin #aaa solid;\n          border-right-width: 0;\n}\n.popup_wrapper .popup__files .file__delete {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          margin: 8px 0;\n          padding: 18px 15px;\n          background: #AA0A0A;\n          color: white;\n          border: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload {\n        margin-top: 16px;\n        margin-bottom: 32px;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          border: thin #aaa solid;\n          border-right-width: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          color: white;\n          cursor: pointer;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      left: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n@media screen and (max-width: 450px) {\n.popup_wrapper .popup {\n    width: calc(90% - 48px);\n    padding: 12px 24px 24px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n  overflow-y: auto;\n  z-index: 999;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    min-height: 50%;\n    width: calc(90% - 72px);\n    max-width: 600px;\n    position: relative;\n    top: -16px;\n    margin: auto;\n    padding: 12px 36px 24px;\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n    overflow: hidden;\n}\n.popup_wrapper .popup.active {\n      top: 32px;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__content {\n      max-height: calc(100% - 128px);\n      margin-bottom: 64px;\n      overflow-y: auto;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files .file {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: stretch;\n            -ms-flex-align: stretch;\n                align-items: stretch;\n}\n.popup_wrapper .popup__files .file__name {\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          margin: 8px 0;\n          padding: 18px 15px;\n          color: black;\n          border: thin #aaa solid;\n          border-right-width: 0;\n}\n.popup_wrapper .popup__files .file__delete {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          margin: 8px 0;\n          padding: 18px 15px;\n          background: #AA0A0A;\n          color: white;\n          border: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload {\n        margin-top: 16px;\n        margin-bottom: 32px;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          border: thin #aaa solid;\n          border-right-width: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          border-radius: 0;\n          color: white;\n          cursor: pointer;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      left: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n@media screen and (max-width: 450px) {\n.popup_wrapper .popup {\n    width: calc(90% - 48px);\n    padding: 12px 24px 24px;\n}\n.popup_wrapper .popup__item_delete {\n      left: 24px;\n}\n}\n", ""]);
 
 // exports
 

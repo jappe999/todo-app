@@ -126,6 +126,7 @@
                     flex:1;
                     background:#298E84;
                     border:0;
+                    border-radius:0;
                     color:white;
                     cursor:pointer;
                 }
@@ -149,6 +150,10 @@
         .popup {
             width:calc(90% - 48px);
             padding:12px 24px 24px;
+
+            &__item_delete {
+                left:24px;
+            }
         }
     }
 }

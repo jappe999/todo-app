@@ -7,7 +7,7 @@
         </header>
         <main>
             <div class="todo_items_wrapper">
-                <h1>Todo app</h1>
+                <h1>Hello {{ user.name }}</h1>
                 <todoitem id="new_todo">
                     <input type="text" placeholder="To do..." v-model="new_item.title" @keypress.enter="add_todo">
                     <button type="button" class="button" @click.prevent="add_todo">
