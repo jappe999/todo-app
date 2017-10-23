@@ -13,10 +13,10 @@ class UsersController extends Controller
     /**
      * Get the user's id, name and e-mail.
      *
-     * @param int $userId
+     * @param int|string $userId
      * @return string
      */
-    public function getUser(int $userId): string
+    public function getUser($userId): string
     {
         if ($userId === 'me')
             $userId = $_SESSION['id'];
