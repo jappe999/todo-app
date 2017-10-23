@@ -39,10 +39,11 @@ class File
         if (!empty($id)) {
             $query = "SELECT * FROM files WHERE id=:file_id";
             $stmt  = DB::prepare($query);
+
             $stmt->bindParam(':file_id', $id);
             $stmt->execute();
-            $file = $stmt->fetch();
 
+            $file       = $stmt->fetch();
             $this->id   = $file['id'];
             $this->name = $file['name'];
 
@@ -52,6 +53,31 @@ class File
             else
                 $this->content = $file['content_binary'];
         }
+    }
+
+    /**
+     * Adds a new file and connects it to the task.
+     *
+     * Adds a new file to the files table and sets the tasks id.
+     */
+    function addNew(array $file, int $taskId): int
+    {
+        $query = "INSERT INTO files
+                  (name, task_id, content)
+                  VALUES (:name, :task_id, :content)";
+        $pdo   = DB::connect();
+        $stmt  = $pdo->prepare($query);
+
+        var_dump($file);
+
+        $stmt->bindParam('name', $file['name']);
+        $stmt->bindParam('task_id', $taskId);
+        $stmt->bindParam('content', $file['content']);
+
+        if ($stmt->execute())
+            return $pdo->lastInsertId();
+        else
+            return 0;
     }
 
     /**
