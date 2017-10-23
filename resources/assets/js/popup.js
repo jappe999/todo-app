@@ -75,6 +75,9 @@ export default {
         return;
 
       reader.onload = function() {
+        if (this.result.length > 16777215)
+          return alert(file.name + ' cannot be greater than 16MiB');
+
         // Change file object to new file.
         input.file = {
           name: file.name,

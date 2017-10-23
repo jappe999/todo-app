@@ -68,8 +68,6 @@ class File
         $pdo   = DB::connect();
         $stmt  = $pdo->prepare($query);
 
-        var_dump($file);
-
         $stmt->bindParam('name', $file['name']);
         $stmt->bindParam('task_id', $taskId);
         $stmt->bindParam('content', $file['content']);

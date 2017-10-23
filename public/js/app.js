@@ -13741,6 +13741,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       if (files.length < 1) return;
 
       reader.onload = function () {
+        if (this.result.length > 16777215) return alert(file.name + ' cannot be greater than 16MiB');
+
         // Change file object to new file.
         input.file = {
           name: file.name,
@@ -13948,6 +13950,7 @@ var render = function() {
                 },
                 [
                   _c("span", [
+                    _c("i", { staticClass: "fa fa-file" }, [_vm._v(" ")]),
                     _vm._v(
                       "\n                        " +
                         _vm._s(_vm.files_to_upload.join(", ")) +
@@ -13955,7 +13958,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  !_vm.files_to_upload
+                  _vm.files_to_upload.length < 1
                     ? _c("span", [_vm._v("Click here to select files")])
                     : _vm._e()
                 ]

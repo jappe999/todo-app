@@ -26,7 +26,6 @@ class FilesController extends Controller
             return json_encode(compact('status', 'error'));
         }
 
-
         $params  = Request::getParams();
         $task    = $params->get('task');
         $file    = $params->get('file');
