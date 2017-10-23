@@ -70,6 +70,33 @@
             margin:8px 0;
         }
 
+        &__files {
+            width:100%;
+            margin:16px 0;
+            &__upload {
+                width:100%;
+                display:flex;
+                align-content:stretch;
+                &_input {
+                    display:none;
+                }
+                &_area {
+                    width:100%;
+                    padding:$todo_item_padding_top_bottom $todo_item_padding_left_right;
+                    flex:3;
+                    border:thin #aaa solid;
+                }
+                &_button {
+                    width:100%;
+                    padding:$todo_item_padding_top_bottom $todo_item_padding_left_right;
+                    flex:1;
+                    background:#298E84;
+                    border:0;
+                    color:white;
+                }
+            }
+        }
+
         &__item_delete {
           position:absolute;
           bottom:24px;

@@ -34,9 +34,17 @@
             </div>
 
             <!-- Files -->
-            <div id="files" for="file in files">
-                <div class="file">
+            <div class="popup__files">
+                <b>Files</b>
+                <div class="popup__files__file" for="file in files">
 
+                </div>
+                <div class="popup__files__upload">
+                    <input class="popup__files__upload_input" type="file" value="Upload files">
+                    <div class="popup__files__upload_area">
+                        {{ file_name }}
+                    </div>
+                    <button type="button" class="popup__files__upload_button">Upload</button>
                 </div>
             </div>
 

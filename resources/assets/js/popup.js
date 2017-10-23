@@ -31,13 +31,13 @@ export default {
       });
     },
     edit_title(event) {
-      // Save parent node to...
+      // Save parent node to ...
       var parent = event.target.parentNode;
 
       this.title_edit       = true;
       this.description_edit = false;
 
-      // ...focus on the input
+      // ...focus on the input field
       setTimeout(function() {
         parent.childNodes[0].focus();
       }, 100);

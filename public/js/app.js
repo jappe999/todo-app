@@ -13654,7 +13654,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    height: calc(90% - 24px);\n    width: calc(90% - 72px);\n    max-height: 500px;\n    max-width: 600px;\n    position: relative;\n    top: 45%;\n    margin: auto;\n    padding: 12px 36px 24px;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n}\n.popup_wrapper .popup.active {\n      top: 50%;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      right: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n", ""]);
+exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    height: calc(90% - 24px);\n    width: calc(90% - 72px);\n    max-height: 500px;\n    max-width: 600px;\n    position: relative;\n    top: 45%;\n    margin: auto;\n    padding: 12px 36px 24px;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n}\n.popup_wrapper .popup.active {\n      top: 50%;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files__upload {\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 30px;\n          -webkit-box-flex: 3;\n              -ms-flex: 3;\n                  flex: 3;\n          border: thin #aaa solid;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 30px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          color: white;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      right: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n", ""]);
 
 // exports
 
@@ -13696,13 +13696,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     edit_title: function edit_title(event) {
-      // Save parent node to...
+      // Save parent node to ...
       var parent = event.target.parentNode;
 
       this.title_edit = true;
       this.description_edit = false;
 
-      // ...focus on the input
+      // ...focus on the input field
       setTimeout(function () {
         parent.childNodes[0].focus();
       }, 100);
@@ -13851,7 +13851,38 @@ var render = function() {
                 ])
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "popup__files" }, [
+            _c("b", [_vm._v("Files")]),
+            _vm._v(" "),
+            _c("div", {
+              staticClass: "popup__files__file",
+              attrs: { for: "file in files" }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "popup__files__upload" }, [
+              _c("input", {
+                staticClass: "popup__files__upload_input",
+                attrs: { type: "file", value: "Upload files" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "popup__files__upload_area" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.file_name) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "popup__files__upload_button",
+                  attrs: { type: "button" }
+                },
+                [_vm._v("Upload")]
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c(
             "button",
@@ -13866,16 +13897,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "files", for: "file in files" } }, [
-      _c("div", { staticClass: "file" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
