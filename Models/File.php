@@ -43,15 +43,10 @@ class File
             $stmt->bindParam(':file_id', $id);
             $stmt->execute();
 
-            $file       = $stmt->fetch();
-            $this->id   = $file['id'];
-            $this->name = $file['name'];
-
-            // Checks which column is used.
-            if (!empty($file['content']))
-                $this->content = $file['content'];
-            else
-                $this->content = $file['content_binary'];
+            $file          = $stmt->fetch();
+            $this->id      = $file['id'];
+            $this->name    = $file['name'];
+            $this->content = $file['content'];
         }
     }
 
@@ -76,6 +71,15 @@ class File
             return $pdo->lastInsertId();
         else
             return 0;
+    }
+
+    public function getAll(): array
+    {
+      $id      = $this->getId();
+      $name    = $this->getName();
+      $content = $this->getContent();
+
+      return compact('id', 'name', 'content');
     }
 
     /**

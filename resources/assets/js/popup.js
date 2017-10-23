@@ -1,6 +1,6 @@
 export default {
   name: 'popup',
-  props: ['item', 'is_open'],
+  props: ['item', 'is_open', 'files'],
   data() {
     return {
       title_edit: false,
@@ -65,6 +65,7 @@ export default {
       var file_input = this.$refs.file_upload,
           files      = file_input.files,
           reader     = new FileReader(),
+          self       = this,
           input      = {
             task: this.item,
             file: {}
@@ -90,7 +91,11 @@ export default {
         // Upload file.
         axios.post('/api/files/add', input)
         .then(response => {
-          console.log(response);
+          if (response.data.status === 'success') {
+            input.file['id'] = response.data.data;
+            self.files.push(input.file);
+            self.files_to_upload = [];
+          }
         })
         .catch(err => {
           console.error(err);

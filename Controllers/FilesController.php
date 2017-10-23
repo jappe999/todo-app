@@ -34,8 +34,7 @@ class FilesController extends Controller
         $fileId  = $newFile->addNew($file, $task['id']);
 
         if ($fileId !== 0) {
-            $file['id'] = $fileId;
-            $data[]     = $file;
+            $data = $fileId;
         } else {
             $status = 'error';
             $error  = 'File ' . $file['name'] . ' could not be uploaded.';

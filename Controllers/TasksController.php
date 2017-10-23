@@ -30,15 +30,25 @@ class TasksController extends Controller
         return json_encode(compact('status', 'data'));
     }
 
-    public function getTask($task_id): string
+    public function getTask($taskId): string
     {
-        $data   = Task::get($task_id);
+        $task  = Task::get($taskId)->get();
+        $files = Task::get($taskId)->getFiles();
+        $data  = array('task' => $task, 'files' => []);
+
+        // Set file ids
+        foreach ($files as $file) {
+          array_push($data['files'], array(
+            'id' => $file->getId(),
+            'name' => $file->getName()
+          ));
+        }
+
         $status = $data !== false ? 'success' : 'error';
         return json_encode(compact('status', 'data'));
     }
 
-    // TODO: Rewrite to new model
-    public function addNew()
+    public function addNew(): string
     {
         if (!Request::isPost())
             return error('405');

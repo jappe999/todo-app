@@ -32,7 +32,6 @@ Router::post('/api/tasks/update', 'TasksController@update');
 Router::post('/api/tasks/delete', 'TasksController@delete');
 
 // Files endpoints
-Router::get('/api/files/get', 'FilesController@getAll');
 Router::get('/api/files/get/{file_id}', 'TasksController@getFile');
 Router::post('/api/files/add', 'FilesController@addNew');
 Router::post('/api/files/update', 'FilesController@update');

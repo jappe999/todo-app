@@ -21,6 +21,7 @@ var app = new Vue({
       user: {},
       items: [],
       selected_item: {},
+      files: [],
       popup_open: false
     },
     mounted() {
@@ -82,8 +83,17 @@ var app = new Vue({
         });
       },
       open_popup(item) {
-        this.selected_item = item;
-        this.popup_open = true;
+        axios.get('/api/tasks/get/' + item.id)
+        .then(response => {
+          if (response.data.status === 'success') {
+            this.selected_item = response.data.data.task;
+            this.files         = response.data.data.files;
+            this.popup_open    = true;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+        });
       },
       close_popup() {
         this.popup_open = false;

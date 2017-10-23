@@ -12,47 +12,49 @@
                 <input v-else type="text" :value="item.title" v-model="item.title"
                        @keypress.enter="update_item" />
             </div>
-            <div v-if="!this.description_edit" @click="edit_description" class="popup__description">
-                <span v-if="this.item.description">
-                    {{ item.description }}
-                </span>
-                <span v-else>
-                    No description
-                </span>
-            </div>
-            <div v-else class="popup__description">
-                <textarea>{{ item.description }}</textarea>
-                <button type="button" @click="update_item">Update</button>
-            </div>
-            <div class="popup__assignee">
-                <span v-if="item.assignee">
-                    {{ item.assignee.name }}
-                </span>
-                <span v-else>
-                    Choose a user
-                </span>
-            </div>
-
-            <!-- Files -->
-            <div class="popup__files">
-                <b>Files</b>
-                <div class="popup__files__file" for="file in files">
-
+            <main class="popup__content">
+                <div v-if="!this.description_edit" @click="edit_description" class="popup__description">
+                    <span v-if="this.item.description">
+                        {{ item.description }}
+                    </span>
+                    <span v-else>
+                        No description
+                    </span>
                 </div>
-                <div class="popup__files__upload">
-                    <input class="popup__files__upload_input" ref="file_upload" type="file" @change="set_files" multiple>
-                    <div class="popup__files__upload_area" @click="select_files">
-                        <span>
-                            <i class="fa fa-file">&nbsp;</i>
-                            {{ files_to_upload.join(', ') }}
-                        </span>
-                        <span v-if="files_to_upload.length < 1">Click here to select files</span>
+                <div v-else class="popup__description">
+                    <textarea>{{ item.description }}</textarea>
+                    <button type="button" @click="update_item">Update</button>
+                </div>
+                <div class="popup__assignee">
+                    <span v-if="item.assignee">
+                        {{ item.assignee.name }}
+                    </span>
+                    <span v-else>
+                        Choose a user
+                    </span>
+                </div>
+
+                <!-- Files -->
+                <div class="popup__files">
+                    <b>Files</b>
+                    <div class="popup__files__file" v-for="file in files">
+                        {{ file.name }}
                     </div>
-                    <button type="button" class="popup__files__upload_button" @click="upload_files">Upload</button>
+                    <div class="popup__files__upload">
+                        <input class="popup__files__upload_input" ref="file_upload" type="file" @change="set_files" multiple>
+                        <div class="popup__files__upload_area" @click="select_files">
+                            <span>
+                                <i class="fa fa-file">&nbsp;</i>
+                                {{ files_to_upload.join(', ') }}
+                            </span>
+                            <span v-if="files_to_upload.length < 1">Click here to select files</span>
+                        </div>
+                        <button type="button" class="popup__files__upload_button" @click="upload_files">Upload</button>
+                    </div>
                 </div>
-            </div>
 
-            <button class="popup__item_delete" type="button" title="Delete todo item">Delete</button>
+                <button class="popup__item_delete" type="button" title="Delete todo item">Delete</button>
+            </main>
         </div>
     </div>
 </template>

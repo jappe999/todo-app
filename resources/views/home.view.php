@@ -19,7 +19,7 @@
                 </div>
             </div>
         </main>
-        <popup :item="selected_item" :is_open="popup_open" @close_popup="close_popup"></popup>
+        <popup :item="selected_item" :files="files" :is_open="popup_open" @close_popup="close_popup"></popup>
         <footer>
             <div id="footer_inner">
                 Made with <a href="//youtu.be/lXMskKTw3Bc" target="_blank">&hearts;</a> by <a href="http://thenerdin.me" target="_blank">thenerdin.me</a>

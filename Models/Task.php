@@ -46,7 +46,7 @@ class Task
     /**
      * Get the task from the tasks table by id.
      *
-     * Get task and files from database.
+     * Get task from database.
      *
      * @param int $id
      * @return mixed
@@ -62,7 +62,7 @@ class Task
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 
-            self::$task = $stmt->fetch();
+            self::$task          = $stmt->fetch();
 
             return new self;
         } else {
@@ -297,11 +297,12 @@ class Task
         $stmt->bindParam(':task_id', self::$task['id']);
         $stmt->execute();
 
-        foreach ($stmt->fetchAll() as $fileId) {
-            array_push(self::$task['files'], new File($fileId));
+        foreach ($stmt->fetchAll() as $file) {
+            $files[] = new File($file['id']);
         }
 
-        return self::$task['files'];
+        // Check if array is empty or not.
+        return !empty($files) ? $files : [];
     }
 
     /**
