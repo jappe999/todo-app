@@ -13726,16 +13726,43 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     },
     upload_files: function upload_files() {
       var file_input = this.$refs.file_upload,
-          files = file_input.files,
-          reader = new FileReader(),
+          files = file_input.files;
+
+      // Check for files
+      if (files.length < 1) return;
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = files[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var file = _step.value;
+
+          if ((typeof file === 'undefined' ? 'undefined' : _typeof(file)) === 'object') this.upload(file);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    },
+    upload: function upload(file) {
+      var reader = new FileReader(),
           self = this,
           input = {
         task: this.item,
         file: {}
       };
-
-      // Check for files
-      if (files.length < 1) return;
 
       reader.onload = function () {
         if (this.result.length > 16777215) return alert(file.name + ' cannot be greater than 16MiB');
@@ -13748,6 +13775,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           type: file.type,
           content: this.result
         };
+
+        console.log(this, input.file);
 
         // Upload file.
         axios.post('/api/files/add', input).then(function (response) {
@@ -13762,10 +13791,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       };
 
       // Read each file as a base64 blob.
-      for (var file in files) {
-        var file = files[file];
-        reader.readAsDataURL(file);
-      }
+      reader.readAsDataURL(file);
     },
     close_all: function close_all(event) {
       // Check if clicked element isn't the below and if some are open.

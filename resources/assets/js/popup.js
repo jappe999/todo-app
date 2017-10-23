@@ -63,17 +63,24 @@ export default {
     },
     upload_files() {
       var file_input = this.$refs.file_upload,
-          files      = file_input.files,
-          reader     = new FileReader(),
+          files      = file_input.files;
+
+      // Check for files
+      if (files.length < 1)
+        return;
+
+      for (let file of files) {
+        if (typeof file === 'object')
+          this.upload(file);
+      }
+    },
+    upload(file) {
+      var reader     = new FileReader(),
           self       = this,
           input      = {
             task: this.item,
             file: {}
           };
-
-      // Check for files
-      if (files.length < 1)
-        return;
 
       reader.onload = function() {
         if (this.result.length > 16777215)
@@ -87,6 +94,8 @@ export default {
           type: file.type,
           content: this.result
         };
+
+        console.log(this, input.file);
 
         // Upload file.
         axios.post('/api/files/add', input)
@@ -103,10 +112,7 @@ export default {
       };
 
       // Read each file as a base64 blob.
-      for (var file in files) {
-        var file = files[file];
-        reader.readAsDataURL(file);
-      }
+      reader.readAsDataURL(file);
     },
     close_all(event) {
       // Check if clicked element isn't the below and if some are open.
