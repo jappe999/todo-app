@@ -26,8 +26,7 @@ CREATE TABLE `files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `task_id` int(11) NOT NULL,
-  `content` text,
-  `content_binary` longblob,
+  `content` mediumtext,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
