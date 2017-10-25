@@ -14,7 +14,10 @@ class FilesController extends Controller
 {
 
     /**
-     * Adds new files
+     * Adds a new file
+     *
+     * Adds a new file to the files table.
+     * Files are sent as a base64 string with the POST method.
      *
      * @return string
      */
@@ -30,6 +33,8 @@ class FilesController extends Controller
         $task    = $params->get('task');
         $file    = $params->get('file');
         $status  = 'success';
+
+        // Actual processing of the file.
         $newFile = new File();
         $fileId  = $newFile->addNew($file, $task['id']);
 
@@ -44,7 +49,16 @@ class FilesController extends Controller
         return json_encode(compact('status', 'data'));
     }
 
-    public function getFile($fileId)
+    /**
+     * Get a file from the files table based on an id.
+     *
+     * Get the decoded base64 string from the files table corresponding
+     * to the given file id.
+     *
+     * @param int $fileId
+     * @return mixed
+     */
+    public function getFile(int $fileId)
     {
         $query = "SELECT content FROM files
                   WHERE id=:id";
@@ -60,12 +74,37 @@ class FilesController extends Controller
         $content = preg_replace_callback(
                        '/^([a-z0-9\-\_]+\/[a-z0-9\-\_]+)(;base64,){1}/',
                        function($matches) {
-                           header("Content-Type:" . $matches[1]);
+                            header("Content-Type:" . $matches[1]);
                            return '';
                        },
                        $content
                    );
 
         return base64_decode($content);
+    }
+
+    /**
+     * Updates a file in the database.
+     *
+     * Updates a file in the database with the corresponding id.
+     *
+     * @param array $file
+     */
+    public function update(array $file): string
+    {
+
+    }
+
+    /**
+     * undocumented function summary
+     *
+     * Undocumented function long description
+     *
+     * @param array $file
+     * @return return type
+     */
+    public function delete($file): string
+    {
+
     }
 }

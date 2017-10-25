@@ -1,11 +1,11 @@
 <template>
     <div class="todo_item">
         <slot>
-            <div>
-                <span class="todo_item__title" v-if="item">
+            <div v-if="item">
+                <span class="todo_item__title">
                     {{ item.title }}
                 </span>
-                <div class="todo_item__assignee" v-if="item">
+                <div class="todo_item__assignee">
                     {{ item.assignee }}
                 </div>
             </div>

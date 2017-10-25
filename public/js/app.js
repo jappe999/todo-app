@@ -13497,27 +13497,25 @@ var render = function() {
     { staticClass: "todo_item" },
     [
       _vm._t("default", [
-        _c("div", [
-          _vm.item
-            ? _c("span", { staticClass: "todo_item__title" }, [
+        _vm.item
+          ? _c("div", [
+              _c("span", { staticClass: "todo_item__title" }, [
                 _vm._v(
                   "\n                " +
                     _vm._s(_vm.item.title) +
                     "\n            "
                 )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.item
-            ? _c("div", { staticClass: "todo_item__assignee" }, [
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "todo_item__assignee" }, [
                 _vm._v(
                   "\n                " +
                     _vm._s(_vm.item.assignee) +
                     "\n            "
                 )
               ])
-            : _vm._e()
-        ]),
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "button",
@@ -13793,6 +13791,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       // Read each file as a base64 blob.
       reader.readAsDataURL(file);
     },
+    delete_file: function delete_file(file) {
+      axios.post('/api/files/delete', file).then(function (response) {
+        console.log(response);
+      }).catch(function (err) {
+        console.error(err);
+      });
+    },
     close_all: function close_all(event) {
       // Check if clicked element isn't the below and if some are open.
       if (!(this.parent_has_class(event.target, 'popup__title') || this.parent_has_class(event.target, 'popup__description') || this.parent_has_class(event.target, 'popup__assignee')) && (this.title_edit || this.description_edit)) {
@@ -13969,7 +13974,12 @@ var render = function() {
                       "button",
                       {
                         staticClass: "file__delete",
-                        attrs: { role: "button" }
+                        attrs: { role: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.delete_file(file)
+                          }
+                        }
                       },
                       [
                         _vm._v(

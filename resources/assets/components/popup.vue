@@ -41,7 +41,7 @@
                         <a :href="'/api/files/get/' + file.id" class="file__name">
                             {{ file.name }}
                         </a>
-                        <button role="button" class="file__delete">
+                        <button role="button" @click="delete_file(file)" class="file__delete">
                             Delete file
                         </button>
                     </div>
