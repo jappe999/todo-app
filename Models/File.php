@@ -39,18 +39,23 @@ class File
      * Construct the File object.
      * If $id is given, $this->content will be set
      * to the corresponding row from the table files.
+     *
+     * @param int $id
+     * @param bool $getRow
      */
-    function __construct($id = null)
+    function __construct($id = null, $getRow = true)
     {
-        if (!empty($id)) {
-            $query = "SELECT * FROM files WHERE id=:file_id";
+        // Always set $this->id
+        $this->id = $id;
+
+        if (!empty($id) && $getRow) {
+            $query = "SELECT name, content FROM files WHERE id=:file_id";
             $stmt  = DB::prepare($query);
 
-            $stmt->bindParam(':file_id', $id);
+            $stmt->bindParam(':file_id', $this->id);
             $stmt->execute();
 
             $file          = $stmt->fetch();
-            $this->id      = $file['id'];
             $this->name    = $file['name'];
             $this->content = $file['content'];
         }
@@ -166,7 +171,7 @@ class File
         if (!$this->isBase64($content))
             $this->content = base64_encode($content);
 
-        $query         = "UPDATE files SET content = :content";
+        $query         = "UPDATE files SET content=:content";
         $stmt          = DB::prepare($query);
 
         $stmt->bindParam(':content', $content);
@@ -183,8 +188,8 @@ class File
     {
         $query = "DELETE FROM files WHERE id=:file_id";
         $stmt  = DB::prepare($query);
-
-        $stmt->bind(':file_id', $this->id);
+        
+        $stmt->bindParam(':file_id', $this->id);
 
         return $stmt->execute();
     }

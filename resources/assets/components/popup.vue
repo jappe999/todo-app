@@ -37,7 +37,7 @@
                 <!-- Files -->
                 <div class="popup__files">
                     <b>Files</b>
-                    <file :file="file" v-for="file in files" :key="file.id"></file>
+                    <file :file="file" v-for="file in files" :key="file.id" @remove_file="remove_file"></file>
                     <div class="popup__files__upload">
                         <input class="popup__files__upload_input" ref="file_upload" type="file" @change="set_files" multiple>
                         <div class="popup__files__upload_area" @click="select_files">

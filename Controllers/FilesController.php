@@ -134,8 +134,20 @@ class FilesController extends Controller
      * @param array $file
      * @return return type
      */
-    public function delete($file): string
+    public function delete(): string
     {
+        $fileId = Request::getParams()->get('id');
+        $file = new File($fileId, false);
 
+        if ($file->delete()) {
+            // Just some hardcoded string.
+            return '{"status": "success"}';
+        } else {
+            $status = 'error';
+            $error  = 'Something went wrong deleting the file '
+                      . $fileToDelete['name'] .  '.';
+            // Not just some hardcoded string.
+            return json_encode(compact('status', 'error'));
+        }
     }
 }

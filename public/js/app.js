@@ -13778,8 +13778,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           content: this.result
         };
 
-        console.log(this, input.file);
-
         // Actual upload of file.
         axios.post('/api/files/add', input).then(function (response) {
           if (response.data.status === 'success') {
@@ -13794,6 +13792,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
       // Read each file as a base64 blob.
       reader.readAsDataURL(file);
+    },
+    remove_file: function remove_file(file_id) {
+      // Remove file from list
+      for (var index in this.files) {
+        var file = this.files[index];
+
+        if (file.id === file_id) {
+          this.files.splice(index, 1);
+        }
+      }
     },
     close_all: function close_all(event) {
       // Check if clicked element isn't the below and if some are open.
@@ -13951,7 +13959,11 @@ var render = function() {
                 _c("b", [_vm._v("Files")]),
                 _vm._v(" "),
                 _vm._l(_vm.files, function(file) {
-                  return _c("file", { key: file.id, attrs: { file: file } })
+                  return _c("file", {
+                    key: file.id,
+                    attrs: { file: file },
+                    on: { remove_file: _vm.remove_file }
+                  })
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "popup__files__upload" }, [
@@ -14098,8 +14110,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     delete_file: function delete_file(file) {
-      axios.post('/api/files/delete', file).then(function (response) {
-        console.log(response);
+      var _this = this;
+
+      axios.post('/api/files/delete', { 'id': file.id }).then(function (response) {
+        if (response.data.status === 'success') {
+          _this.$emit('remove_file', file.id);
+        }
       }).catch(function (err) {
         console.error(err);
       });

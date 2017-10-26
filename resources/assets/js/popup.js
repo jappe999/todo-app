@@ -95,8 +95,6 @@ export default {
           content: this.result
         };
 
-        console.log(this, input.file);
-
         // Actual upload of file.
         axios.post('/api/files/add', input)
         .then(response => {
@@ -113,6 +111,16 @@ export default {
 
       // Read each file as a base64 blob.
       reader.readAsDataURL(file);
+    },
+    remove_file(file_id) {
+      // Remove file from list
+      for (let index in this.files) {
+        let file = this.files[index];
+
+        if (file.id === file_id) {
+          this.files.splice(index, 1);
+        }
+      }
     },
     close_all(event) {
       // Check if clicked element isn't the below and if some are open.
