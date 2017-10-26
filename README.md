@@ -7,7 +7,7 @@ A simple todo app for a school assignment
 - NPM (only if you want to edit the front-end)
 
 ## Reading the docs
-If you want to read the docs of the code, you can download PHPDocumenter and run the following from the root directory of the project:  
+If you want to read the docs of the code, you can download PHPDocumenter and run the following command from the root directory of the project:  
 ```
 php phpDocumenter.phar -d ./ -t ./public/docs
 ```
