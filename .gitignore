@@ -1,6 +1,9 @@
 # Config
 /config/database.php
 
+#PHPDocumenter
+/public/docs
+
 # Logs
 logs
 *.log
@@ -59,4 +62,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
