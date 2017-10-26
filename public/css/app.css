@@ -128,7 +128,15 @@ a:hover {
 #app > main .todo_items_wrapper {
   width: 100%;
   max-width: 500px;
+  position: relative;
   margin: auto;
+}
+
+#app > main .todo_items_wrapper .todo_switch {
+  position: absolute;
+  top: 16px;
+  right: 0;
+  display: inline-block;
 }
 
 #app > footer {

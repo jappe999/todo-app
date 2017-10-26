@@ -12,7 +12,11 @@ export default {
   methods: {
     set_done() {
       this.item.is_done = true;
-      this.$emit('set_done', this.item);
+      this.$emit('update_todo', this.item);
+    },
+    set_todo() {
+      this.item.is_done = false;
+      this.$emit('update_todo', this.item);
     },
     edit() {
       this.$emit('edit', this.item);

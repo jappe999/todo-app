@@ -24,7 +24,8 @@ var app = new Vue({
       items: [],
       selected_item: {},
       files: [],
-      popup_open: false
+      popup_open: false,
+      type: 'todo'
     },
     mounted() {
       this.get_user(),
@@ -42,7 +43,7 @@ var app = new Vue({
         });
       },
       get_items() {
-        axios.get('/api/tasks/todo/get')
+        axios.get('/api/tasks/' + this.type + '/get')
         .then(response => {
           if (response.data.status === 'success')
             this.items = response.data.data;
@@ -50,6 +51,10 @@ var app = new Vue({
         .catch(err => {
           console.error(err);
         });
+      },
+      set_type(type) {
+        this.type = type;
+        this.get_items();
       },
       add_todo() {
         // If empty
@@ -71,7 +76,8 @@ var app = new Vue({
           if (response.data.status === 'success') {
             for (var i in this.items) {
               if (this.items[i].id == item.id) {
-                if (item.is_done)
+                if ((item.is_done && this.type === 'todo') ||
+                    (!item.is_done && this.type === 'done'))
                   this.items.splice(i, 1);
                 else
                   this.items[i] = JSON.parse(JSON.stringify(item));

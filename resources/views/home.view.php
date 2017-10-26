@@ -8,14 +8,19 @@
         <main>
             <div class="todo_items_wrapper">
                 <h1>Hello {{ user.name }}</h1>
-                <todoitem id="new_todo">
+                <div class="todo_switch">
+                  <a href="#todo" @click="set_type('todo')">Todo</a>
+                  &nbsp;-&nbsp;
+                  <a href="#done" @click="set_type('done')">Done</a>
+                </div>
+                <todoitem id="new_todo" v-if="type === 'todo'">
                     <input type="text" placeholder="To do..." v-model="new_item.title" @keypress.enter="add_todo">
                     <button type="button" class="button" @click.prevent="add_todo">
                         Add
                     </button>
                 </todoitem>
                 <div class="todo_items" v-for="item in items">
-                    <todoitem :item="item" @edit="open_popup" @set_done="update_todo"></todoitem>
+                    <todoitem :item="item" @edit="open_popup" @update_todo="update_todo"></todoitem>
                 </div>
             </div>
         </main>

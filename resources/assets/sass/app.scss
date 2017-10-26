@@ -53,7 +53,15 @@ a {
         .todo_items_wrapper {
             width:100%;
             max-width:500px;
+            position:relative;
             margin:auto;
+
+            .todo_switch {
+                position:absolute;
+                top:16px;
+                right:0;
+                display:inline-block;
+            }
         }
     }
 

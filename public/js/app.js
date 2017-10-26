@@ -1418,7 +1418,8 @@ var app = new Vue({
     items: [],
     selected_item: {},
     files: [],
-    popup_open: false
+    popup_open: false,
+    type: 'todo'
   },
   mounted: function mounted() {
     this.get_user(), this.get_items();
@@ -1437,11 +1438,15 @@ var app = new Vue({
     get_items: function get_items() {
       var _this2 = this;
 
-      axios.get('/api/tasks/todo/get').then(function (response) {
+      axios.get('/api/tasks/' + this.type + '/get').then(function (response) {
         if (response.data.status === 'success') _this2.items = response.data.data;
       }).catch(function (err) {
         console.error(err);
       });
+    },
+    set_type: function set_type(type) {
+      this.type = type;
+      this.get_items();
     },
     add_todo: function add_todo() {
       var _this3 = this;
@@ -1463,7 +1468,7 @@ var app = new Vue({
         if (response.data.status === 'success') {
           for (var i in _this4.items) {
             if (_this4.items[i].id == item.id) {
-              if (item.is_done) _this4.items.splice(i, 1);else _this4.items[i] = JSON.parse(JSON.stringify(item));
+              if (item.is_done && _this4.type === 'todo' || !item.is_done && _this4.type === 'done') _this4.items.splice(i, 1);else _this4.items[i] = JSON.parse(JSON.stringify(item));
             }
           }
         }
@@ -13481,7 +13486,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     set_done: function set_done() {
       this.item.is_done = true;
-      this.$emit('set_done', this.item);
+      this.$emit('update_todo', this.item);
+    },
+    set_todo: function set_todo() {
+      this.item.is_done = false;
+      this.$emit('update_todo', this.item);
     },
     edit: function edit() {
       this.$emit('edit', this.item);
@@ -13515,7 +13524,7 @@ var render = function() {
               _vm.item.assignee
                 ? _c("div", { staticClass: "todo_item__assignee" }, [
                     _c("i", [
-                      _vm._v("Assignee: " + _vm._s(_vm.item.assignee.name))
+                      _vm._v("Assigned to: " + _vm._s(_vm.item.assignee.name))
                     ])
                   ])
                 : _vm._e()
@@ -13526,7 +13535,7 @@ var render = function() {
           "button",
           {
             staticClass: "todo_item__edit",
-            attrs: { type: "button", title: "Aanpassen" },
+            attrs: { type: "button", title: "Edit" },
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -13537,20 +13546,39 @@ var render = function() {
           [_c("i", { staticClass: "fa fa-cog" })]
         ),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "todo_item__check",
-            attrs: { type: "button", title: "Afvinken" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.set_done($event)
-              }
-            }
-          },
-          [_c("i", { staticClass: "fa fa-check" })]
-        )
+        _vm.item && _vm.item.is_done === "0"
+          ? _c(
+              "button",
+              {
+                staticClass: "todo_item__check",
+                attrs: { type: "button", title: "Archive" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.set_done($event)
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fa fa-check" })]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.item && _vm.item.is_done === "1"
+          ? _c(
+              "button",
+              {
+                staticClass: "todo_item__revert",
+                attrs: { type: "button", title: "Revert" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.set_todo($event)
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fa fa-undo" })]
+            )
+          : _vm._e()
       ])
     ],
     2
