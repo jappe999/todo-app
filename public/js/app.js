@@ -1428,7 +1428,7 @@ var app = new Vue({
     get_user: function get_user() {
       var _this = this;
 
-      axios.get('/api/users/me/get').then(function (response) {
+      axios.get('/api/users/get/me').then(function (response) {
         if (response.data.status === 'success') _this.user = response.data.data;
       }).catch(function (err) {
         console.error(err);
@@ -13511,13 +13511,13 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "todo_item__assignee" }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.item.assignee) +
-                    "\n            "
-                )
-              ])
+              _vm.item.assignee
+                ? _c("div", { staticClass: "todo_item__assignee" }, [
+                    _c("i", [
+                      _vm._v("Assignee: " + _vm._s(_vm.item.assignee.name))
+                    ])
+                  ])
+                : _vm._e()
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -13652,7 +13652,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n  overflow-y: auto;\n  z-index: 999;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    min-height: 50%;\n    width: calc(90% - 72px);\n    max-width: 600px;\n    position: relative;\n    top: -16px;\n    margin: auto;\n    padding: 12px 36px 24px;\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n    overflow: hidden;\n}\n.popup_wrapper .popup.active {\n      top: 32px;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__content {\n      max-height: calc(100% - 128px);\n      margin-bottom: 64px;\n      overflow-y: auto;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__description textarea,\n      .popup_wrapper .popup__description button {\n        padding: 18px 15px;\n        border: 0;\n        border-radius: 0;\n}\n.popup_wrapper .popup__description textarea {\n        width: calc(100% - 30px);\n        -webkit-box-flex: 5;\n            -ms-flex: 5;\n                flex: 5;\n        resize: vertical;\n        background: white;\n        font-family: \"Open Sans\", sans-serif;\n}\n.popup_wrapper .popup__description button {\n        width: 100%;\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n        background: #298E84;\n        color: white;\n        cursor: pointer;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files__upload {\n        margin-top: 16px;\n        margin-bottom: 32px;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          border: thin #aaa solid;\n          border-right-width: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          border-radius: 0;\n          color: white;\n          cursor: pointer;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      left: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n@media screen and (max-width: 450px) {\n.popup_wrapper .popup {\n    width: calc(90% - 48px);\n    padding: 12px 24px 24px;\n}\n.popup_wrapper .popup__item_delete {\n      left: 24px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n  overflow-y: auto;\n  z-index: 999;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    min-height: 50%;\n    width: calc(90% - 72px);\n    max-width: 600px;\n    position: relative;\n    top: -16px;\n    margin: auto;\n    padding: 12px 36px 24px;\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n    overflow: hidden;\n}\n.popup_wrapper .popup.active {\n      top: 32px;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__content {\n      max-height: calc(100% - 128px);\n      margin-bottom: 64px;\n      overflow-y: auto;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__description textarea,\n      .popup_wrapper .popup__description button {\n        padding: 18px 15px;\n        border: 0;\n        border-radius: 0;\n}\n.popup_wrapper .popup__description textarea {\n        width: calc(100% - 30px);\n        -webkit-box-flex: 5;\n            -ms-flex: 5;\n                flex: 5;\n        resize: vertical;\n        background: white;\n        font-family: \"Open Sans\", sans-serif;\n}\n.popup_wrapper .popup__description button {\n        width: 100%;\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n        background: #298E84;\n        color: white;\n        cursor: pointer;\n}\n.popup_wrapper .popup__assignee {\n      margin: 32px 0;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files__upload {\n        margin-top: 16px;\n        margin-bottom: 32px;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          border: thin #aaa solid;\n          border-right-width: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          border-radius: 0;\n          color: white;\n          cursor: pointer;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      left: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n@media screen and (max-width: 450px) {\n.popup_wrapper .popup {\n    width: calc(90% - 48px);\n    padding: 12px 24px 24px;\n}\n.popup_wrapper .popup__item_delete {\n      left: 24px;\n}\n}\n", ""]);
 
 // exports
 
@@ -13672,7 +13672,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     return {
       title_edit: false,
       description_edit: false,
-      files_to_upload: []
+      assignee_edit: false,
+      files_to_upload: [],
+      users: []
     };
   },
 
@@ -13681,7 +13683,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       if (element.className.split(' ').indexOf(classname) >= 0) return true;
 
       // Recursive calling
-      return element.parentNode.className && this.parent_has_class(element.parentNode, classname);
+      return element.parentNode.tagName !== 'BODY' && this.parent_has_class(element.parentNode, classname);
     },
     close_popup: function close_popup() {
       this.update_item();
@@ -13702,6 +13704,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
       this.title_edit = true;
       this.description_edit = false;
+      this.assignee_edit = false;
 
       // ...focus on the input field
       setTimeout(function () {
@@ -13710,6 +13713,25 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     },
     edit_description: function edit_description() {
       this.description_edit = true;
+      this.title_edit = false;
+      this.assignee_edit = false;
+    },
+    get_users: function get_users() {
+      var _this = this;
+
+      axios.get('/api/users/get').then(function (response) {
+        console.log(_this.item);
+        if (response.data.status === 'success') _this.users = response.data.data;
+      });
+    },
+    user_is_assigned: function user_is_assigned() {
+      if (this.item.assignee) return user.id === this.item.assignee.id;
+      return false;
+    },
+    edit_assignee: function edit_assignee() {
+      this.get_users();
+      this.assignee_edit = true;
+      this.description_edit = false;
       this.title_edit = false;
     },
     select_files: function select_files(event) {
@@ -13803,12 +13825,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
       }
     },
+    update_close_all: function update_close_all() {
+      this.title_edit = false;
+      this.description_edit = false;
+      this.assignee_edit = false;
+
+      this.update_item();
+    },
     close_all: function close_all(event) {
       // Check if clicked element isn't the below and if some are open.
-      if (!(this.parent_has_class(event.target, 'popup__title') || this.parent_has_class(event.target, 'popup__description') || this.parent_has_class(event.target, 'popup__assignee')) && (this.title_edit || this.description_edit)) {
-        this.title_edit = false;
-        this.description_edit = false;
-        this.update_item();
+      if (!(this.parent_has_class(event.target, 'popup__title') || this.parent_has_class(event.target, 'popup__description') || this.parent_has_class(event.target, 'popup__assignee')) && (this.title_edit || this.description_edit || this.assignee_edit)) {
+        this.update_close_all();
       }
     }
   }
@@ -13858,7 +13885,7 @@ var render = function() {
               on: { click: _vm.edit_title }
             },
             [
-              !this.title_edit
+              !_vm.title_edit
                 ? _c("h2", [
                     _vm._v(
                       "\n                " +
@@ -13899,7 +13926,9 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("main", { staticClass: "popup__content" }, [
-            !this.description_edit
+            _vm._m(0),
+            _vm._v(" "),
+            !_vm.description_edit
               ? _c(
                   "div",
                   {
@@ -13908,7 +13937,7 @@ var render = function() {
                     on: { click: _vm.edit_description }
                   },
                   [
-                    this.item.description
+                    _vm.item.description
                       ? _c("span", [
                           _vm._v(
                             "\n                    " +
@@ -13924,32 +13953,113 @@ var render = function() {
                   ]
                 )
               : _c("div", { staticClass: "popup__description" }, [
-                  _c("textarea", [_vm._v(_vm._s(_vm.item.description))]),
+                  _c(
+                    "textarea",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.item.description,
+                          expression: "item.description"
+                        }
+                      ],
+                      domProps: { value: _vm.item.description },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.item, "description", $event.target.value)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.item.description))]
+                  ),
                   _vm._v(" "),
                   _c(
                     "button",
                     {
                       attrs: { type: "button" },
-                      on: { click: _vm.update_item }
+                      on: { click: _vm.update_close_all }
                     },
                     [_vm._v("Update")]
                   )
                 ]),
             _vm._v(" "),
             _c("div", { staticClass: "popup__assignee" }, [
-              _vm.item.assignee
-                ? _c("span", [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.item.assignee.name) +
-                        "\n                "
-                    )
+              _c("b", [_vm._v("Assignee:")]),
+              _vm._v(" "),
+              !_vm.assignee_edit
+                ? _c("span", { on: { click: _vm.edit_assignee } }, [
+                    _vm.item.assignee
+                      ? _c("span", [
+                          _vm._v(
+                            "\n                      " +
+                              _vm._s(_vm.item.assignee.name) +
+                              "\n                  "
+                          )
+                        ])
+                      : _c("span", [
+                          _vm._v(
+                            "\n                      Choose a user\n                  "
+                          )
+                        ])
                   ])
-                : _c("span", [
-                    _vm._v(
-                      "\n                    Choose a user\n                "
-                    )
-                  ])
+                : _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.item.assignee,
+                          expression: "item.assignee"
+                        }
+                      ],
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.item,
+                              "assignee",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          _vm.update_close_all
+                        ]
+                      }
+                    },
+                    _vm._l(_vm.users, function(user) {
+                      return _c(
+                        "option",
+                        {
+                          key: user.key,
+                          domProps: {
+                            value: user,
+                            selected: _vm.user_is_assigned
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                      " +
+                              _vm._s(user.name) +
+                              "\n                  "
+                          )
+                        ]
+                      )
+                    })
+                  )
             ]),
             _vm._v(" "),
             _c(
@@ -14024,7 +14134,16 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "margin-top-10" }, [
+      _c("b", [_vm._v("Description:")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

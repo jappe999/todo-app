@@ -23,7 +23,11 @@ Router::get('/logout', 'AuthenticateController@logout');
 // --- API endpoints --- //
 
 // Users endpoints
-Router::get('/api/users/{user_id}/get', 'UsersController@getUser');
+Router::get('/api/users/get/{user_id}', 'UsersController@getUser');
+Router::get('/api/users/get', 'UsersController@getAll');
+Router::post('/api/users/add', 'UsersController@addNew');
+Router::post('/api/users/update', 'UsersController@update');
+Router::post('/api/users/delete', 'UsersController@delete');
 
 // Tasks endpoints
 Router::get('/api/tasks/get', 'TasksController@getAll');
@@ -39,10 +43,3 @@ Router::get('/api/files/get/{file_id}', 'FilesController@getFile');
 Router::post('/api/files/add', 'FilesController@addNew');
 Router::post('/api/files/update', 'FilesController@update');
 Router::post('/api/files/delete', 'FilesController@delete');
-
-// Users enpoints
-Router::get('/api/users/get', 'FilesController@getAll');
-Router::get('/api/users/get/{user_id}', 'TasksController@getUser');
-Router::post('/api/users/add', 'FilesController@addNew');
-Router::post('/api/users/update', 'FilesController@update');
-Router::post('/api/users/delete', 'FilesController@delete');

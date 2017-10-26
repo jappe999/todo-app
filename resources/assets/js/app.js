@@ -32,7 +32,7 @@ var app = new Vue({
     },
     methods: {
       get_user() {
-        axios.get('/api/users/me/get')
+        axios.get('/api/users/get/me')
         .then(response => {
           if (response.data.status === 'success')
             this.user = response.data.data;

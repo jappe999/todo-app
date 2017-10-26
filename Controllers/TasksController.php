@@ -87,8 +87,14 @@ class TasksController extends Controller
         if ($params->has('description'))
             $task->setDescription($params->get('description'));
 
-        if ($params->has('assignee'))
-            $task->setAssignee($params->get('assignee'));
+        if ($params->has('assignee')) {
+            if (gettype($params->get('assignee')) === 'int')
+                $assignee = $params->get('assignee');
+            else
+                $assignee = $params->get('assignee')['id'];
+
+            $task->setAssignee($assignee);
+        }
 
         if ($params->has('is_done'))
             $task->setDone($params->get('is_done'));

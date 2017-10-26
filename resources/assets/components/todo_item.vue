@@ -5,8 +5,8 @@
                 <span class="todo_item__title">
                     {{ item.title }}
                 </span>
-                <div class="todo_item__assignee">
-                    {{ item.assignee }}
+                <div class="todo_item__assignee" v-if="item.assignee">
+                    <i>Assignee: {{ item.assignee.name }}</i>
                 </div>
             </div>
             <button type="button" title="Aanpassen" class="todo_item__edit" @click.prevent="edit">

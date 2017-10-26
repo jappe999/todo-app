@@ -27,7 +27,7 @@ class Task
      *
      * @var array
      */
-    private static $task = array();
+    private static $task = [];
 
     /**
      * Description of the task.
@@ -69,12 +69,18 @@ class Task
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 
-            self::$task          = $stmt->fetch();
+            self::$task = $stmt->fetch();
+            if (!empty(self::$task['assignee']))
+                self::$task['assignee'] = User::byId(self::$task['assignee']);
 
             return new self;
         } else {
-            if (!empty(self::$task))
+            if (!empty(self::$task)) {
+                if (!empty(self::$task['assignee']))
+                    self::$task['assignee'] = self::getAssignee()->getAll();
+                    
                 return self::$task;
+            }
 
             throw new Exception("Task id cannot be NULL");
         }
@@ -128,7 +134,10 @@ class Task
         $stmt  = DB::prepare($query);
         $stmt->execute();
 
-        return $stmt->fetchAll();
+        $data = $stmt->fetchAll();
+        $data = self::getAllAssignees($data);
+
+        return $data;
     }
 
     /**
@@ -142,7 +151,10 @@ class Task
         $stmt  = DB::prepare($query);
         $stmt->execute();
 
-        return $stmt->fetchAll();
+        $data = $stmt->fetchAll();
+        $data = self::getAllAssignees($data);
+
+        return $data;
     }
 
     /**
@@ -156,7 +168,30 @@ class Task
         $stmt  = DB::prepare($query);
         $stmt->execute();
 
-        return $stmt->fetchAll();
+        $data = $stmt->fetchAll();
+        $data = self::getAllAssignees($data);
+
+        return $data;
+    }
+
+    /**
+     * Get all assignees by id.
+     *
+     * Loop through a set of data from the tasks table
+     * and extend the assignee column where necessary.
+     *
+     * @param array $data
+     * @return array The extended data.
+     */
+    private function getAllAssignees(array $data): array
+    {
+        foreach ($data as &$row) {
+            if (!empty($row['assignee'])) {
+                $row['assignee'] = User::byId($row['assignee'])->getAll();
+            }
+        }
+
+        return $data;
     }
 
     /**
@@ -188,9 +223,9 @@ class Task
      * Sets task to done in the tasks table.
      *
      * @param bool $isDone True if the task is finished.
-     * @return bool
+     * @return self
      */
-    public function setDone(bool $isDone): bool
+    public function setDone(bool $isDone): self
     {
         $isDone = $isDone ? 1 : 0;
         $query  = "UPDATE tasks SET is_done=:is_done WHERE id=:id";
@@ -198,43 +233,40 @@ class Task
 
         $stmt->bindParam(':is_done', $isDone);
         $stmt->bindParam(':id', self::$task['id']);
+        $stmt->execute();
 
-        return $stmt->execute();
+        return new self;
     }
 
     /**
-     * Get tasks assignee id.
+     * Get tasks assignee.
      *
      * @return User
      */
-    public function getAssignee()
+    public function getAssignee(): User
     {
-        return User::get(self::$task['assignee']);
+        return self::$task['assignee'];
     }
 
     /**
      * Set task assignee with User object.
      *
-     * @param object $object
-     * @return bool
+     * @param int $userId
+     * @return self
      */
-    public function setAssignee($user): bool
+    public function setAssignee(int $userId): self
     {
-        $userId = $user->getId();
         $query  = "UPDATE tasks SET assignee=:user_id WHERE id=:id";
         $stmt   = DB::prepare($query);
 
         $stmt->bindParam(':user_id', $userId);
         $stmt->bindParam(':id', self::$task['id']);
+        $stmt->execute();
 
-        if ($stmt->execute()) {
-            // Update task with new assignee id
-            self::$task['assignee'] = $userId;
-            return true;
-        }
+        // Update task with new assignee id
+        self::$task['assignee'] = $userId;
 
-        return false;
-
+        return new self;
     }
 
     /**
@@ -251,17 +283,18 @@ class Task
      * Set the title of the task.
      *
      * @param string $title
-     * @return bool
+     * @return self
      */
-    public function setTitle(string $title): bool
+    public function setTitle(string $title): self
     {
         $query = "UPDATE tasks SET title=:title WHERE id=:id";
         $stmt  = DB::prepare($query);
 
         $stmt->bindParam(':title', $title);
         $stmt->bindParam(':id', self::$task['id']);
+        $stmt->execute();
 
-        return $stmt->execute();
+        return new self;
     }
 
     /**
@@ -278,17 +311,18 @@ class Task
      * Set the description of the task.
      *
      * @param string $description
-     * @return bool
+     * @return self
      */
-    public function setDescription(string $description): bool
+    public function setDescription(string $description): self
     {
         $query = "UPDATE tasks SET description=:description WHERE id=:id";
         $stmt  = DB::prepare($query);
 
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':id', self::$task['id']);
+        $stmt->execute();
 
-        return $stmt->execute();
+        return new self;
     }
 
     /**

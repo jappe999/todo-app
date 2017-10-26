@@ -6,15 +6,18 @@
                 <i class="fa fa-times fa-2x"></i>
             </div>
             <div class="popup__title" @click="edit_title" id="edit_title" title="Edit title">
-                <h2 v-if="!this.title_edit">
+                <h2 v-if="!title_edit">
                     {{ item.title }}
                 </h2>
                 <input v-else type="text" :value="item.title" v-model="item.title"
                        @keypress.enter="update_item" />
             </div>
             <main class="popup__content">
-                <div v-if="!this.description_edit" @click="edit_description" class="popup__description" title="Edit description">
-                    <span v-if="this.item.description">
+                <div class="margin-top-10">
+                  <b>Description:</b>
+                </div>
+                <div v-if="!description_edit" @click="edit_description" class="popup__description" title="Edit description">
+                    <span v-if="item.description">
                         {{ item.description }}
                     </span>
                     <span v-else>
@@ -22,16 +25,24 @@
                     </span>
                 </div>
                 <div v-else class="popup__description">
-                    <textarea>{{ item.description }}</textarea>
-                    <button type="button" @click="update_item">Update</button>
+                    <textarea v-model="item.description">{{ item.description }}</textarea>
+                    <button type="button" @click="update_close_all">Update</button>
                 </div>
                 <div class="popup__assignee">
-                    <span v-if="item.assignee">
-                        {{ item.assignee.name }}
-                    </span>
-                    <span v-else>
-                        Choose a user
-                    </span>
+                  <b>Assignee:</b>
+                  <span v-if="!assignee_edit" @click="edit_assignee">
+                      <span v-if="item.assignee">
+                          {{ item.assignee.name }}
+                      </span>
+                      <span v-else>
+                          Choose a user
+                      </span>
+                  </span>
+                  <select v-else v-model="item.assignee" @change="update_close_all">
+                      <option :value="user" v-for="user in users" :key="user.key" :selected="user_is_assigned">
+                          {{ user.name }}
+                      </option>
+                  </select>
                 </div>
 
                 <!-- Files -->

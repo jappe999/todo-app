@@ -5,7 +5,9 @@ export default {
     return {
       title_edit: false,
       description_edit: false,
-      files_to_upload: []
+      assignee_edit: false,
+      files_to_upload: [],
+      users: []
     }
   },
   methods: {
@@ -14,7 +16,7 @@ export default {
         return true;
 
       // Recursive calling
-      return element.parentNode.className && this.parent_has_class(element.parentNode, classname);
+      return element.parentNode.tagName !== 'BODY'  && this.parent_has_class(element.parentNode, classname);
     },
     close_popup() {
       this.update_item();
@@ -37,6 +39,7 @@ export default {
 
       this.title_edit       = true;
       this.description_edit = false;
+      this.assignee_edit = false;
 
       // ...focus on the input field
       setTimeout(function() {
@@ -45,6 +48,26 @@ export default {
     },
     edit_description() {
       this.description_edit = true;
+      this.title_edit = false;
+      this.assignee_edit = false;
+    },
+    get_users() {
+      axios.get('/api/users/get')
+      .then(response => {
+        console.log(this.item);
+        if (response.data.status === 'success')
+          this.users = response.data.data;
+      })
+    },
+    user_is_assigned() {
+      if (this.item.assignee)
+        return user.id === this.item.assignee.id;
+      return false;
+    },
+    edit_assignee() {
+      this.get_users();
+      this.assignee_edit = true;
+      this.description_edit = false;
       this.title_edit = false;
     },
     select_files(event) {
@@ -122,15 +145,20 @@ export default {
         }
       }
     },
+    update_close_all() {
+      this.title_edit       = false;
+      this.description_edit = false;
+      this.assignee_edit    = false;
+
+      this.update_item();
+    },
     close_all(event) {
       // Check if clicked element isn't the below and if some are open.
       if (!(this.parent_has_class(event.target, 'popup__title') ||
             this.parent_has_class(event.target, 'popup__description') ||
             this.parent_has_class(event.target, 'popup__assignee')) &&
-          (this.title_edit || this.description_edit)) {
-        this.title_edit = false;
-        this.description_edit = false;
-        this.update_item();
+          (this.title_edit || this.description_edit || this.assignee_edit)) {
+        this.update_close_all();
       }
     }
   }
