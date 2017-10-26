@@ -18,10 +18,7 @@ class HomeController extends Controller
      */
     public function get()
     {
-        if (User::authenticate())
-            return view('home.view.php');
-
-        return redirect('/login');
+        return view('home.view.php');
     }
 
     /**

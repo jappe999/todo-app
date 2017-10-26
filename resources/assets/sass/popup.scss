@@ -81,28 +81,6 @@
             width:100%;
             margin:16px 0;
 
-            .file {
-                display:flex;
-                align-items:stretch;
-                &__name {
-                    flex:5;
-                    margin:8px 0;
-                    padding:$todo_item_padding_top_bottom $todo_item_padding_left_right / 2;
-                    color:black;
-                    border:thin #aaa solid;
-                    border-right-width:0;
-                }
-                &__delete {
-                    flex:1;
-                    margin:8px 0;
-                    padding:$todo_item_padding_top_bottom $todo_item_padding_left_right / 2;
-                    background:$red_color;
-                    color:white;
-                    border:0;
-                    cursor:pointer;
-                }
-            }
-
             &__upload {
                 margin-top:16px;
                 margin-bottom:32px;

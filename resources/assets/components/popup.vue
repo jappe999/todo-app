@@ -37,14 +37,7 @@
                 <!-- Files -->
                 <div class="popup__files">
                     <b>Files</b>
-                    <div class="file" v-for="file in files">
-                        <a :href="'/api/files/get/' + file.id" class="file__name">
-                            {{ file.name }}
-                        </a>
-                        <button role="button" @click="delete_file(file)" class="file__delete">
-                            Delete file
-                        </button>
-                    </div>
+                    <file :file="file" v-for="file in files" :key="file.id"></file>
                     <div class="popup__files__upload">
                         <input class="popup__files__upload_input" ref="file_upload" type="file" @change="set_files" multiple>
                         <div class="popup__files__upload_area" @click="select_files">

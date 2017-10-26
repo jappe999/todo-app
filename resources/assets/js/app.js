@@ -6,11 +6,13 @@ window.axios = require('axios');
 import navbar from '../components/navbar.vue';
 import todo_item from '../components/todo_item.vue';
 import popup from '../components/popup.vue';
+import file from '../components/file.vue';
 
 // Component binding
 Vue.component('navbar', navbar);
 Vue.component('todoitem', todo_item);
 Vue.component('popup', popup);
+Vue.component('file', file);
 
 var app = new Vue({
     el: '#app',

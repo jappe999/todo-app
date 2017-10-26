@@ -97,7 +97,7 @@ export default {
 
         console.log(this, input.file);
 
-        // Upload file.
+        // Actual upload of file.
         axios.post('/api/files/add', input)
         .then(response => {
           if (response.data.status === 'success') {
@@ -113,15 +113,6 @@ export default {
 
       // Read each file as a base64 blob.
       reader.readAsDataURL(file);
-    },
-    delete_file(file) {
-      axios.post('/api/files/delete', file)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(err => {
-        console.error(err);
-      })
     },
     close_all(event) {
       // Check if clicked element isn't the below and if some are open.

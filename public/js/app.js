@@ -1390,6 +1390,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_todo_item_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_todo_item_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_popup_vue__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_popup_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_popup_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_file_vue__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_file_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_file_vue__);
 // Libraries
 window.Vue = __webpack_require__(14);
 window.axios = __webpack_require__(17);
@@ -1399,10 +1401,12 @@ window.axios = __webpack_require__(17);
 
 
 
+
 // Component binding
 Vue.component('navbar', __WEBPACK_IMPORTED_MODULE_0__components_navbar_vue___default.a);
 Vue.component('todoitem', __WEBPACK_IMPORTED_MODULE_1__components_todo_item_vue___default.a);
 Vue.component('popup', __WEBPACK_IMPORTED_MODULE_2__components_popup_vue___default.a);
+Vue.component('file', __WEBPACK_IMPORTED_MODULE_3__components_file_vue___default.a);
 
 var app = new Vue({
   el: '#app',
@@ -13648,7 +13652,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n  overflow-y: auto;\n  z-index: 999;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    min-height: 50%;\n    width: calc(90% - 72px);\n    max-width: 600px;\n    position: relative;\n    top: -16px;\n    margin: auto;\n    padding: 12px 36px 24px;\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n    overflow: hidden;\n}\n.popup_wrapper .popup.active {\n      top: 32px;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__content {\n      max-height: calc(100% - 128px);\n      margin-bottom: 64px;\n      overflow-y: auto;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files .file {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: stretch;\n            -ms-flex-align: stretch;\n                align-items: stretch;\n}\n.popup_wrapper .popup__files .file__name {\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          margin: 8px 0;\n          padding: 18px 15px;\n          color: black;\n          border: thin #aaa solid;\n          border-right-width: 0;\n}\n.popup_wrapper .popup__files .file__delete {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          margin: 8px 0;\n          padding: 18px 15px;\n          background: #AA0A0A;\n          color: white;\n          border: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload {\n        margin-top: 16px;\n        margin-bottom: 32px;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          border: thin #aaa solid;\n          border-right-width: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          border-radius: 0;\n          color: white;\n          cursor: pointer;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      left: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n@media screen and (max-width: 450px) {\n.popup_wrapper .popup {\n    width: calc(90% - 48px);\n    padding: 12px 24px 24px;\n}\n.popup_wrapper .popup__item_delete {\n      left: 24px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.popup_wrapper {\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  visibility: collapse;\n  opacity: 0;\n  -webkit-transition: opacity .3s, visibility .3s 0s;\n  transition: opacity .3s, visibility .3s 0s;\n  overflow-y: auto;\n  z-index: 999;\n}\n.popup_wrapper .popup_background {\n    height: 100%;\n    width: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(44, 44, 44, 0.75);\n}\n.popup_wrapper.active {\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: opacity .3s;\n    transition: opacity .3s;\n}\n.popup_wrapper .popup {\n    min-height: 50%;\n    width: calc(90% - 72px);\n    max-width: 600px;\n    position: relative;\n    top: -16px;\n    margin: auto;\n    padding: 12px 36px 24px;\n    background: #EEEEEE;\n    -webkit-box-shadow: 0 0 4px #444;\n            box-shadow: 0 0 4px #444;\n    border-radius: 4px;\n    -webkit-transition: .3s;\n    transition: .3s;\n    overflow: hidden;\n}\n.popup_wrapper .popup.active {\n      top: 32px;\n}\n.popup_wrapper .popup__close {\n      margin-top: 20px;\n      float: right;\n}\n.popup_wrapper .popup__title {\n      width: calc(100% - 30px);\n      padding-right: 30px;\n      border-bottom: 2px #348CB2 solid;\n      word-wrap: break-word;\n}\n.popup_wrapper .popup__title input {\n        width: 100%;\n        margin: 12px 0;\n        padding: 8px 0;\n        border: 0;\n        font-size: 24px;\n        font-weight: bold;\n        color: black;\n        background: transparent;\n}\n.popup_wrapper .popup__content {\n      max-height: calc(100% - 128px);\n      margin-bottom: 64px;\n      overflow-y: auto;\n}\n.popup_wrapper .popup__description {\n      margin: 8px 0;\n}\n.popup_wrapper .popup__files {\n      width: 100%;\n      margin: 16px 0;\n}\n.popup_wrapper .popup__files__upload {\n        margin-top: 16px;\n        margin-bottom: 32px;\n        width: 100%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-line-pack: stretch;\n            align-content: stretch;\n}\n.popup_wrapper .popup__files__upload_input {\n          display: none;\n}\n.popup_wrapper .popup__files__upload_area {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 5;\n              -ms-flex: 5;\n                  flex: 5;\n          border: thin #aaa solid;\n          border-right-width: 0;\n          cursor: pointer;\n}\n.popup_wrapper .popup__files__upload_button {\n          width: 100%;\n          padding: 18px 15px;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          background: #298E84;\n          border: 0;\n          border-radius: 0;\n          color: white;\n          cursor: pointer;\n}\n.popup_wrapper .popup__item_delete {\n      position: absolute;\n      bottom: 24px;\n      left: 36px;\n      padding: 18px 30px;\n      background: #AA0A0A;\n      color: white;\n      border: 0;\n}\n@media screen and (max-width: 450px) {\n.popup_wrapper .popup {\n    width: calc(90% - 48px);\n    padding: 12px 24px 24px;\n}\n.popup_wrapper .popup__item_delete {\n      left: 24px;\n}\n}\n", ""]);
 
 // exports
 
@@ -13776,7 +13780,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         console.log(this, input.file);
 
-        // Upload file.
+        // Actual upload of file.
         axios.post('/api/files/add', input).then(function (response) {
           if (response.data.status === 'success') {
             input.file['id'] = response.data.data;
@@ -13790,13 +13794,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
       // Read each file as a base64 blob.
       reader.readAsDataURL(file);
-    },
-    delete_file: function delete_file(file) {
-      axios.post('/api/files/delete', file).then(function (response) {
-        console.log(response);
-      }).catch(function (err) {
-        console.error(err);
-      });
     },
     close_all: function close_all(event) {
       // Check if clicked element isn't the below and if some are open.
@@ -13954,40 +13951,7 @@ var render = function() {
                 _c("b", [_vm._v("Files")]),
                 _vm._v(" "),
                 _vm._l(_vm.files, function(file) {
-                  return _c("div", { staticClass: "file" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "file__name",
-                        attrs: { href: "/api/files/get/" + file.id }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(file.name) +
-                            "\n                    "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "file__delete",
-                        attrs: { role: "button" },
-                        on: {
-                          click: function($event) {
-                            _vm.delete_file(file)
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        Delete file\n                    "
-                        )
-                      ]
-                    )
-                  ])
+                  return _c("file", { key: file.id, attrs: { file: file } })
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "popup__files__upload" }, [
@@ -14063,6 +14027,168 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(59)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(57)
+/* template */
+var __vue_template__ = __webpack_require__(58)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-aba609ac"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/components/file.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-aba609ac", Component.options)
+  } else {
+    hotAPI.reload("data-v-aba609ac", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "navbar",
+  props: ['file'],
+  data: function data() {
+    return {};
+  },
+
+  methods: {
+    delete_file: function delete_file(file) {
+      axios.post('/api/files/delete', file).then(function (response) {
+        console.log(response);
+      }).catch(function (err) {
+        console.error(err);
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "file" }, [
+    _c(
+      "a",
+      {
+        staticClass: "file__name",
+        attrs: { href: "/api/files/get/" + _vm.file.id }
+      },
+      [_vm._v("\n        " + _vm._s(_vm.file.name) + "\n    ")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "file__delete",
+        attrs: { role: "button" },
+        on: {
+          click: function($event) {
+            _vm.delete_file(_vm.file)
+          }
+        }
+      },
+      [_vm._v("\n        Delete file\n    ")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-aba609ac", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(60);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("f23d6db8", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-aba609ac\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!./file.scss", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-aba609ac\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!./file.scss");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.file[data-v-aba609ac] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n}\n.file__name[data-v-aba609ac] {\n    min-width: 0;\n    -webkit-box-flex: 5;\n        -ms-flex: 5;\n            flex: 5;\n    margin: 8px 0;\n    padding: 18px 15px;\n    color: black;\n    border: thin #aaa solid;\n    border-right-width: 0;\n    word-wrap: break-word;\n}\n.file__delete[data-v-aba609ac] {\n    min-width: 0;\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    margin: 8px 0;\n    padding: 18px 15px;\n    background: #AA0A0A;\n    color: white;\n    border: 0;\n    cursor: pointer;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
