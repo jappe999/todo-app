@@ -144,20 +144,23 @@ class User
     public static function register(): bool
     {
         $params   = Request::getParams();
+        $id       = randomId();
         $name     = $params->get('name');
         $email    = $params->get('email');
         $password = encrypt($params->get('password'));
 
-        $query    = "INSERT INTO users (name, email, password)
-                     VALUES (:name, :email, :password)";
+        $query    = "INSERT INTO users (id, name, email, password)
+                     VALUES (:id, :name, :email, :password)";
 
         try {
             $stmt = DB::prepare($query);
+            $stmt->bindParam(':id', $id);
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $e) {
+            var_dump($e->getMessage());
             return false;
         }
     }

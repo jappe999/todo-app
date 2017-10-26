@@ -74,6 +74,17 @@ function redirect(string $path)
 }
 
 /**
+ * Generates a random integer.
+ *
+ * @return int
+ */
+function randomId(): int
+{
+    // Don't ask why I chose this number.
+    return random_int(0, 4294967295);
+}
+
+/**
  * Hashed a string following the blowfish principle.
  *
  * https://gist.github.com/dzuelke/972386

@@ -13,21 +13,21 @@ class TasksController extends Controller
 
     public function getAll(): string
     {
-        $data   = Task::getAll();
+        $data   = Task::getAll($_SESSION['id']);
         $status = $data !== false ? 'success' : 'error';
         return json_encode(compact('status', 'data'));
     }
 
     public function getAllTodos(): string
     {
-        $data   = Task::getAllTodos();
+        $data   = Task::getAllTodos($_SESSION['id']);
         $status = $data !== false ? 'success' : 'error';
         return json_encode(compact('status', 'data'));
     }
 
     public function getAllDone(): string
     {
-        $data   = Task::getAllDone();
+        $data   = Task::getAllDone($_SESSION['id']);
         $status = $data !== false ? 'success' : 'error';
         return json_encode(compact('status', 'data'));
     }

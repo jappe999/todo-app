@@ -78,7 +78,7 @@ class Task
             if (!empty(self::$task)) {
                 if (!empty(self::$task['assignee']))
                     self::$task['assignee'] = self::getAssignee()->getAll();
-                    
+
                 return self::$task;
             }
 
@@ -96,20 +96,23 @@ class Task
      */
     public static function add(string $title): self
     {
-        $query = "INSERT INTO tasks (title)
-                  VALUES (:title)";
+        $id    = randomId();
+        $query = "INSERT INTO tasks (id, title, created_by)
+                  VALUES (:id, :title, :created_by)";
 
         try {
             // Create a PDO instance for later use.
             $pdo  = DB::connect();
             $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':id', $id);
             $stmt->bindParam(':title', $title);
+            $stmt->bindParam(':created_by', $_SESSION['id']);
 
             if ($stmt->execute()) {
                 // Get id of newly created row (use the PDO instance).
                 $newId    = $pdo->lastInsertId();
                 $getQuery = "SELECT * FROM tasks
-                             WHERE id=:id";
+                             WHERE private_id=:id";
                 $getStmt  = DB::prepare($getQuery);
 
                 $getStmt->bindParam(':id', $newId);
@@ -126,12 +129,15 @@ class Task
      *
      * Get all rows. No matter if they're finished or not.
      *
+     * @param int $userId
      * @return array
      */
-    public static function getAll(): array
+    public static function getAll(int $userId): array
     {
-        $query = "SELECT * FROM tasks ORDER BY id DESC";
+        $query = "SELECT * FROM tasks (created_by=:user_id OR assignee=:assignee_id) ORDER BY private_id DESC";
         $stmt  = DB::prepare($query);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':assignee_id', $userId);
         $stmt->execute();
 
         $data = $stmt->fetchAll();
@@ -143,12 +149,15 @@ class Task
     /**
      * Get all todos from tasks table.
      *
+     * @param int $userId
      * @return array
      */
-    public static function getAllTodos(): array
+    public static function getAllTodos(int $userId): array
     {
-        $query = "SELECT * FROM tasks WHERE is_done=false ORDER BY id DESC";
+        $query = "SELECT * FROM tasks WHERE is_done=false AND (created_by=:user_id OR assignee=:assignee_id) ORDER BY private_id DESC";
         $stmt  = DB::prepare($query);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':assignee_id', $userId);
         $stmt->execute();
 
         $data = $stmt->fetchAll();
@@ -160,12 +169,15 @@ class Task
     /**
      * Get all finished todos from tasks table.
      *
+     * @param int $userId
      * @return array
      */
-    public static function getAllDone(): array
+    public static function getAllDone(int $userId): array
     {
-        $query = "SELECT * FROM tasks WHERE is_done=true ORDER BY id DESC";
+        $query = "SELECT * FROM tasks WHERE is_done=true AND (created_by=:user_id OR assignee=:assignee_id) ORDER BY private_id DESC";
         $stmt  = DB::prepare($query);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':assignee_id', $userId);
         $stmt->execute();
 
         $data = $stmt->fetchAll();

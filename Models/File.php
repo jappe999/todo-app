@@ -68,12 +68,14 @@ class File
      */
     function addNew(array $file, int $taskId): int
     {
+        $id    = randomId();
         $query = "INSERT INTO files
-                  (name, task_id, content)
-                  VALUES (:name, :task_id, :content)";
+                  (id, name, task_id, content)
+                  VALUES (:id, :name, :task_id, :content)";
         $pdo   = DB::connect();
         $stmt  = $pdo->prepare($query);
 
+        $stmt->bindParam('id', $id);
         $stmt->bindParam('name', $file['name']);
         $stmt->bindParam('task_id', $taskId);
         $stmt->bindParam('content', $file['content']);
@@ -188,7 +190,7 @@ class File
     {
         $query = "DELETE FROM files WHERE id=:file_id";
         $stmt  = DB::prepare($query);
-        
+
         $stmt->bindParam(':file_id', $this->id);
 
         return $stmt->execute();
