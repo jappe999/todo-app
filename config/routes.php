@@ -2,22 +2,25 @@
 
 use Core\Router as Router;
 
-// Regular
+// --- Regular routes --- //
 Router::get('/', 'HomeController@get');
 Router::get('/test', 'HomeController@test');
 
-// Authentication routes
+// --- Authentication routes --- //
+
+// Register
 Router::get('/register', 'AuthenticateController@getRegister');
 Router::post('/register', 'AuthenticateController@register');
 
+// Login
 Router::get('/login', 'AuthenticateController@getLogin');
 Router::post('/login', 'AuthenticateController@login');
 
+// Logout
 Router::get('/logout', 'AuthenticateController@logout');
 
-/**
- * API endpoints
- */
+
+// --- API endpoints --- //
 
 // Users endpoints
 Router::get('/api/users/{user_id}/get', 'UsersController@getUser');

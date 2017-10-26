@@ -177,6 +177,8 @@ class Router
             if (preg_match("@^$regexRoute$@", $path)) {
                 // Return a controller.
                 echo (string) self::executeController($route, $controller, $path);
+
+                // Exit complete method.
                 return;
             } else if (file_exists($public)) {
                 $fileType = explode('.', $public);
@@ -187,6 +189,8 @@ class Router
 
                 // Return an actual file.
                 echo (string) file_get_contents($public);
+
+                // Exit complete method.
                 return;
             }
         }
