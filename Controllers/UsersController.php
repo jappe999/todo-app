@@ -27,7 +27,7 @@ class UsersController extends Controller
             $data   = $stmt->fetchAll();
 
             return json_encode(compact('status', 'data'));
-        } catch (PDOException $e) {
+        } catch (Exception $e) {
             $status = 'error';
             $error  = 'Could not select users.';
 
