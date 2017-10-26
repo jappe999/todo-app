@@ -8,7 +8,7 @@ use Core\Database as DB;
 use Core\Request as Request;
 
 /**
- * HomeController
+ * FilesController
  */
 class FilesController extends Controller
 {

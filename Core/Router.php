@@ -1,11 +1,16 @@
 <?php
+/**
+ * This file contains the core Router class.
+ */
 
 namespace Core;
 
 use Controllers\Controller as Controller;
 
 /**
- * Router class
+ * This class can only be used by the root file. In this case public/index.php.
+ * This class routes every request to the, in routes.php, defined methods and controllers.
+ * The requested method will continue handle the request.
  */
 class Router
 {
@@ -60,15 +65,13 @@ class Router
      * Replaces all parameters with the corresponding regex character class.
      *
      * Replaces all parameters with the corresponding regex character class.
-     * For example: :id would be replaced by \d+. This is defined in "/config/routes.json".
-     * Strings will be replaced with \w+ and number with \d+.
+     * For example: {user_id} would be replaced with ([a-z0-9_]+).
      *
      * @param string $route
-     * @param array $info
      *
      * @return string
      */
-    private static function getRegexRoute($route, $controller): string
+    private static function getRegexRoute(string $route): string
     {
         $route = trim($route, '/');
         return preg_replace(self::$regexPattern, self::$regexPatternStripped, $route);
@@ -78,8 +81,7 @@ class Router
      * Returns the parameters from the path
      *
      * Replaces all parameters with the corresponding regex character class.
-     * For example: :id would be replaced by \d+. This is defined in "/config/routes.json".
-     * Strings will be replaced with \w+ and number with \d+.
+     * For example: {user_id} would be replaced with ([a-z0-9_]+).
      *
      * @param string $route
      * @param string $path
@@ -130,7 +132,15 @@ class Router
         );
     }
 
-    public static function load($routesPath = '')
+    /**
+     * Load this class statically.
+     *
+     * Load this class satically with the routes path defined as constant or a custom one.
+     *
+     * @param string $routesPath
+     * @return self
+     */
+    public static function load(string $routesPath = null): self
     {
         if (!empty($routesPath))
             self::$routesPath = $routesPath;
@@ -150,9 +160,8 @@ class Router
      * the corresponding controller (also defined in "/config/routes.php") will be called.
      * If there is no match it will check if there is a file in "/public" that corresponds
      * to the path.
-     * If all above things fail a 404 error will be raised.
-     *
-     * @param Request $request
+     * If all above fail, a 404 error will be raised.
+     * The content will be echoed in this function.
      *
      */
     public static function handle()
@@ -164,7 +173,7 @@ class Router
 
         foreach ($routes as $route => $controller) {
             // Get the regex corresponding to the route.
-            $regexRoute = self::getRegexRoute($route, $controller);
+            $regexRoute = self::getRegexRoute($route);
             if (preg_match("@^$regexRoute$@", $path)) {
                 // Return a controller.
                 echo (string) self::executeController($route, $controller, $path);

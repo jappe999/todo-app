@@ -12,9 +12,7 @@ use Models\CSRF as CSRF;
 class HomeController extends Controller
 {
     /**
-     * Get the home page.
-     *
-     * Get the home page.
+     * Get the home page view.
      *
      * @return string
      */

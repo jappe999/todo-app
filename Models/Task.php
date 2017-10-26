@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file contains the Task class.
+ */
 
 namespace Models;
 
@@ -6,6 +9,10 @@ use Core\Database as DB;
 use Core\Request as Request;
 use Exception;
 
+/**
+ * Create, read, update and delete (or CRUD for short) tasks with this class.
+ * You can add a title, description, assignee and one or more files to a task.
+ */
 class Task
 {
     /**

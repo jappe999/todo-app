@@ -5,11 +5,10 @@ namespace Controllers;
 use Models\User as User;
 
 /**
- * HomeController
+ * UserController
  */
 class UsersController extends Controller
 {
-
     /**
      * Get the user's id, name and e-mail.
      *

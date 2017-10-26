@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file contains the File class.
+ */
 
 namespace Models;
 

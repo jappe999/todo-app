@@ -1,4 +1,5 @@
 <?php
+// Emptiness...
 
 session_start();
 

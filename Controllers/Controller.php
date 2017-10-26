@@ -10,6 +10,9 @@ use Core\Request as Request;
  */
 class Controller
 {
+    /**
+     * Check if user is logged in or not.
+     */
     public function __construct()
     {
         if (!User::authenticate() &&

@@ -1,13 +1,24 @@
 <?php
+/**
+ * This file contains the CSRF class.
+ */
 
 namespace Models;
 
 use Core\Database as DB;
 use Models\User as User;
 
+/**
+ * Generate, retrieve and verify CSRF tokens with this class.
+ */
 class CSRF
 {
-    private static $tokenLength = 24;
+    /**
+     * The length of a CSRF token generated within this class.
+     *
+     * @var int
+     */
+    const TOKENLENGTH = 24;
 
     public static function getToken()
     {
@@ -15,7 +26,7 @@ class CSRF
     }
 
     /**
-     * Returns a generated token of $tokenLength length.
+     * Returns a generated token with the length defined in $tokenLength.
      *
      * @return string
      */
@@ -25,7 +36,7 @@ class CSRF
         $newToken = '';
 
         // Generate random string.
-        for ($i = 0; $i < self::$tokenLength; $i++) {
+        for ($i = 0; $i < self::TOKENLENGTH; $i++) {
             $randomIndex = rand(0, strlen($chars) - 1);
             $newToken .= $chars[$randomIndex];
         }

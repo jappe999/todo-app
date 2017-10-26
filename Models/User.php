@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file contains the user class.
+ */
 
 namespace Models;
 
@@ -8,7 +11,11 @@ use Models\CSRF;
 use Exception;
 
 /**
- * All that a user can do
+ * Create, read and delete users with this class.
+ * Updating users is not supported.
+ *
+ * Note: This class is called statically.
+ *
  */
 class User
 {

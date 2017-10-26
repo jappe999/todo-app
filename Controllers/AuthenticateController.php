@@ -5,7 +5,7 @@ namespace Controllers;
 use Models\User as User;
 
 /**
- * HomeController
+ * AuthenticateController
  */
 class AuthenticateController extends Controller
 {

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Helper functions.
+ * These functions can be used in the global scope of the application.
+ */
 
 use Core\Request as Request;
 use Core\Template as Template;
