@@ -4,6 +4,9 @@ namespace Models;
 
 use Core\Database as DB;
 
+/**
+ * Create, read, update and delete files with this Model.
+ */
 class File
 {
     /**
@@ -113,16 +116,20 @@ class File
      * Set the name of the file.
      *
      * @param string $name
+     * @return bool
      */
-    public function setName(string $name)
+    public function setName(string $name): bool
     {
         $query = "UPDATE files SET name = :name";
+        $stmt  = DB::prepare($query);
 
-        $stmt = DB::prepare($query);
         $stmt->bindParam(':name', $name);
-        $stmt->execute();
+        $response = $stmt->execute();
 
-        $this->name = $name;
+        if ($response !== false)
+            $this->name = $name;
+
+        return $response;
     }
 
     /**
@@ -135,7 +142,7 @@ class File
      */
     public function getContent(): string
     {
-        return $this->content;
+        return (string) $this->content;
     }
 
     /**
@@ -146,6 +153,7 @@ class File
      * The other column will be emptied.
      *
      * @param string $content
+     * @return bool
      */
     public function setContent($content): bool
     {

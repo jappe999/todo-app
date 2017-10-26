@@ -92,7 +92,38 @@ class FilesController extends Controller
      */
     public function update(array $file): string
     {
+        if (!Request::isPost()) {
+            $status = 'error';
+            $error  = 'This route can only be accessed with POST headers';
+            return json_encode(compact('status', 'error'));
+        }
 
+        $params  = Request::getParams();
+        $task    = $params->get('task');
+        $file    = $params->get('file');
+        $status  = 'success';
+
+        // Actual processing of the file.
+        $file = new File($file['id']);
+
+        if ($file->getName() !== $file['name']) {
+            $nameSet = $file->setName($file['name']);
+        }
+
+        if ($file->getContent() !== $file['content']) {
+            $contentSet = $file->setContent($file['content']);
+        }
+
+
+        if ($nameSet && $contentSet) {
+            $data = $file->getAll();
+        } else {
+            $status = 'error';
+            $error  = 'File ' . $file['name'] . ' could not be uploaded.';
+            return json_encode(compact('status', 'error'));
+        }
+
+        return json_encode(compact('status', 'data'));
     }
 
     /**
