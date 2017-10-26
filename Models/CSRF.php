@@ -20,13 +20,16 @@ class CSRF
      */
     const TOKENLENGTH = 24;
 
+    /**
+     * Get the token from the session global.
+     */
     public static function getToken()
     {
         return $_SESSION['csrf_token'];
     }
 
     /**
-     * Returns a generated token with the length defined in $tokenLength.
+     * Returns a generated token with the length defined in TOKENLENGTH.
      *
      * @return string
      */
@@ -45,7 +48,7 @@ class CSRF
     }
 
     /**
-     * Verifies the token of the session with the token in the database.
+     * Verifies the token in the session with the token in the database.
      *
      * @return bool
      */
