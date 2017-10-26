@@ -43,7 +43,7 @@ class File
      * @param int $id
      * @param bool $getRow
      */
-    function __construct($id = null, $getRow = true)
+    public function __construct($id = null, $getRow = true)
     {
         // Always set $this->id
         $this->id = $id;
@@ -64,9 +64,13 @@ class File
     /**
      * Adds a new file and connects it to the task.
      *
-     * Adds a new file to the files table and sets the tasks id.
+     * Adds a new file to the files table and returns new the tasks private id.
+     *
+     * @param array $File
+     * @param int $taskId
+     * @return int The id
      */
-    function addNew(array $file, int $taskId): int
+    public function addNew(array $file, int $taskId): int
     {
         $id    = randomId();
         $query = "INSERT INTO files
@@ -81,7 +85,7 @@ class File
         $stmt->bindParam('content', $file['content']);
 
         if ($stmt->execute())
-            return $pdo->lastInsertId();
+            return $id;
         else
             return 0;
     }

@@ -33,6 +33,16 @@ export default {
         console.error(err);
       });
     },
+    delete_item() {
+      axios.post('/api/tasks/delete', this.item)
+      .then(response => {
+        if (response.data.status === 'success')
+          this.$emit('close_popup');
+      })
+      .catch(err => {
+        console.error(err);
+      })
+    },
     edit_title(event) {
       // Save parent node to ...
       var parent = event.target.parentNode;

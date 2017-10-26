@@ -47,7 +47,7 @@ CREATE TABLE `tasks` (
   `title` varchar(255) NOT NULL,
   `description` text,
   `created_by` int(11) UNSIGNED NOT NULL,
-  `assignee` int(11) DEFAULT NULL
+  `assignee` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

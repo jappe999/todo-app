@@ -70,12 +70,12 @@ class Task
             $stmt->execute();
 
             self::$task = $stmt->fetch();
-            if (!empty(self::$task['assignee']))
-                self::$task['assignee'] = User::byId(self::$task['assignee']);
 
             return new self;
         } else {
             if (!empty(self::$task)) {
+                if (!empty(self::$task['created_by']))
+                    self::$task['created_by'] = self::getCreator()->getAll();
                 if (!empty(self::$task['assignee']))
                     self::$task['assignee'] = self::getAssignee()->getAll();
 
@@ -141,7 +141,7 @@ class Task
         $stmt->execute();
 
         $data = $stmt->fetchAll();
-        $data = self::getAllAssignees($data);
+        $data = self::getAllUsers($data);
 
         return $data;
     }
@@ -161,7 +161,7 @@ class Task
         $stmt->execute();
 
         $data = $stmt->fetchAll();
-        $data = self::getAllAssignees($data);
+        $data = self::getAllUsers($data);
 
         return $data;
     }
@@ -181,7 +181,7 @@ class Task
         $stmt->execute();
 
         $data = $stmt->fetchAll();
-        $data = self::getAllAssignees($data);
+        $data = self::getAllUsers($data);
 
         return $data;
     }
@@ -195,9 +195,12 @@ class Task
      * @param array $data
      * @return array The extended data.
      */
-    private function getAllAssignees(array $data): array
+    private function getAllUsers(array $data): array
     {
         foreach ($data as &$row) {
+            if (!empty($row['created_by'])) {
+                $row['created_by'] = User::byId($row['created_by'])->getAll();
+            }
             if (!empty($row['assignee'])) {
                 $row['assignee'] = User::byId($row['assignee'])->getAll();
             }
@@ -251,13 +254,23 @@ class Task
     }
 
     /**
+     * Get creator of the task.
+     *
+     * @return User
+     */
+    public function getCreator(): User
+    {
+        return User::byId(self::$task['created_by']);
+    }
+
+    /**
      * Get tasks assignee.
      *
      * @return User
      */
     public function getAssignee(): User
     {
-        return self::$task['assignee'];
+        return User::byId(self::$task['assignee']);
     }
 
     /**

@@ -1487,6 +1487,7 @@ var app = new Vue({
     },
     close_popup: function close_popup() {
       this.popup_open = false;
+      this.get_items();
     }
   }
 });
@@ -13698,6 +13699,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         console.error(err);
       });
     },
+    delete_item: function delete_item() {
+      var _this = this;
+
+      axios.post('/api/tasks/delete', this.item).then(function (response) {
+        if (response.data.status === 'success') _this.$emit('close_popup');
+      }).catch(function (err) {
+        console.error(err);
+      });
+    },
     edit_title: function edit_title(event) {
       // Save parent node to ...
       var parent = event.target.parentNode;
@@ -13717,11 +13727,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       this.assignee_edit = false;
     },
     get_users: function get_users() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get('/api/users/get').then(function (response) {
-        console.log(_this.item);
-        if (response.data.status === 'success') _this.users = response.data.data;
+        console.log(_this2.item);
+        if (response.data.status === 'success') _this2.users = response.data.data;
       });
     },
     user_is_assigned: function user_is_assigned() {
@@ -13987,8 +13997,13 @@ var render = function() {
                   )
                 ]),
             _vm._v(" "),
+            _c("div", { staticClass: "popup__created_by" }, [
+              _c("b", [_vm._v("Created by:")]),
+              _vm._v(" " + _vm._s(_vm.item.created_by.name) + "\n            ")
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "popup__assignee" }, [
-              _c("b", [_vm._v("Assignee:")]),
+              _c("b", [_vm._v("Assigned to:")]),
               _vm._v(" "),
               !_vm.assignee_edit
                 ? _c("span", { on: { click: _vm.edit_assignee } }, [
@@ -14124,7 +14139,8 @@ var render = function() {
               "button",
               {
                 staticClass: "popup__item_delete",
-                attrs: { type: "button", title: "Delete todo item" }
+                attrs: { type: "button", title: "Delete todo item" },
+                on: { click: _vm.delete_item }
               },
               [_vm._v("\n                Delete task\n            ")]
             )

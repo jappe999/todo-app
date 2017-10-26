@@ -28,8 +28,11 @@
                     <textarea v-model="item.description">{{ item.description }}</textarea>
                     <button type="button" @click="update_close_all">Update</button>
                 </div>
+                <div class="popup__created_by">
+                    <b>Created by:</b> {{ item.created_by.name }}
+                </div>
                 <div class="popup__assignee">
-                  <b>Assignee:</b>
+                  <b>Assigned to:</b>
                   <span v-if="!assignee_edit" @click="edit_assignee">
                       <span v-if="item.assignee">
                           {{ item.assignee.name }}
@@ -62,7 +65,7 @@
                     </div>
                 </div>
 
-                <button class="popup__item_delete" type="button" title="Delete todo item">
+                <button class="popup__item_delete" type="button" title="Delete todo item" @click="delete_item">
                     Delete task
                 </button>
             </main>

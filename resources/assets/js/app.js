@@ -99,6 +99,7 @@ var app = new Vue({
       },
       close_popup() {
         this.popup_open = false;
+        this.get_items();
       }
     }
 });
