@@ -22,7 +22,12 @@
         <popup :item="selected_item" :files="files" :is_open="popup_open" @close_popup="close_popup"></popup>
         <footer>
             <div id="footer_inner">
-                Made with <a href="//youtu.be/lXMskKTw3Bc" target="_blank">&hearts;</a> by <a href="http://thenerdin.me" target="_blank">thenerdin.me</a>
+                <div id="footer_inner__left">
+                    Made with <a href="//youtu.be/lXMskKTw3Bc" target="_blank">&hearts;</a> by <a href="http://thenerdin.me" target="_blank">thenerdin.me</a>
+                </div>
+                <div id="footer_inner__right">
+                    Star this project on <a href="https://github.com/jappe999/todo-app" target="_blank">Github</a>
+                </div>
             </div>
         </footer>
     </div>

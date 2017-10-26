@@ -151,3 +151,24 @@ a:hover {
   max-width: 500px;
 }
 
+#app > footer #footer_inner__left {
+  float: left;
+}
+
+#app > footer #footer_inner__right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  #app > footer #footer_inner__left,
+  #app > footer #footer_inner__right {
+    width: 100%;
+    float: left;
+    text-align: center;
+  }
+
+  #app > footer #footer_inner__left {
+    margin-bottom: 8px;
+  }
+}
+

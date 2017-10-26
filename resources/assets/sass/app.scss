@@ -70,6 +70,27 @@ a {
         #footer_inner {
             width:100%;
             max-width:500px;
+
+            &__left {
+                float:left;
+            }
+            &__right {
+                float:right;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    #app > footer #footer_inner {
+        &__left,
+        &__right {
+            width:100%;
+            float:left;
+            text-align:center;
+        }
+        &__left {
+            margin-bottom:8px;
         }
     }
 }
