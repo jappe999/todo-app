@@ -4,6 +4,7 @@ A simple todo app for a school assignment
 ## Requirements
 - PHP 7 or higher
 - A database (duh)
+- NPM (only if you want to edit the front-end)
 
 ## Reading the docs
 If you want to read the docs of the code, you can download PHPDocumenter and run the following from the root directory of the project:  
@@ -17,6 +18,10 @@ If you visit [your_URL]/docs/index.html, you can read the docs. :)
 1. Import config/database.sql into your database.
 2. Copy database.php.example to database.php
 3. Configure database.php with your own credentials.
+
+### NPM
+If you want to edit the front-end of this project, you must run
+` npm install ` and ` npm run watch `
 
 ### Hosting
 #### Windows server
