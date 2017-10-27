@@ -39,7 +39,7 @@ var app = new Vue({
             this.user = response.data.data;
         })
         .catch(err => {
-          console.error(err);
+
         });
       },
       get_items() {
@@ -49,7 +49,7 @@ var app = new Vue({
             this.items = response.data.data;
         })
         .catch(err => {
-          console.error(err);
+
         });
       },
       set_type(type) {
@@ -67,7 +67,7 @@ var app = new Vue({
           this.new_item.title = '';
         })
         .catch(err => {
-          console.error(err);
+
         });
       },
       update_todo(item) {
@@ -87,7 +87,7 @@ var app = new Vue({
           this.new_item.title = '';
         })
         .catch(err => {
-          console.error(err);
+
         });
       },
       open_popup(item) {
@@ -100,7 +100,7 @@ var app = new Vue({
           }
         })
         .catch(err => {
-          console.error(err);
+
         });
       },
       close_popup() {

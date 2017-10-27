@@ -25,12 +25,10 @@ export default {
     update_item() {
       axios.post('/api/tasks/update', this.item)
       .then(response => {
-        if (response.data.status === 'success') {
-          console.log(response.data.data);
-        }
+        // Do nothing
       })
       .catch(err => {
-        console.error(err);
+
       });
     },
     delete_item() {
@@ -40,7 +38,7 @@ export default {
           this.$emit('close_popup');
       })
       .catch(err => {
-        console.error(err);
+
       })
     },
     edit_title(event) {
@@ -64,7 +62,6 @@ export default {
     get_users() {
       axios.get('/api/users/get')
       .then(response => {
-        console.log(this.item);
         if (response.data.status === 'success')
           this.users = response.data.data;
       })
@@ -138,7 +135,7 @@ export default {
           }
         })
         .catch(err => {
-          console.error(err);
+
         });
       };
 

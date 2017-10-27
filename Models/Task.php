@@ -270,7 +270,7 @@ class Task
      */
     public function getAssignee(): User
     {
-        return User::byId(self::$task['assignee']);
+        return User::byId(self::$task['assignee'] ?? 0);
     }
 
     /**

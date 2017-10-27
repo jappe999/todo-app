@@ -28,7 +28,7 @@
                     <textarea v-model="item.description">{{ item.description }}</textarea>
                     <button type="button" @click="update_close_all">Update</button>
                 </div>
-                <div class="popup__created_by">
+                <div class="popup__created_by" v-if="item.created_by">
                     <b>Created by:</b> {{ item.created_by.name }}
                 </div>
                 <div class="popup__assignee">
