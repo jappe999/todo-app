@@ -36,13 +36,14 @@ class User
     public static function byId(int $userId): self
     {
         $query = "SELECT * FROM users WHERE id=:user_id";
+        $stmt  = DB::prepare($query);
 
-        $stmt = DB::prepare($query);
         $stmt->bindParam(':user_id', $userId);
         $stmt->execute();
+
         self::$user = $stmt->fetch();
 
-        return new self;
+        return new static;
     }
 
     /**
@@ -61,7 +62,7 @@ class User
         $stmt->execute();
         self::$user = $stmt->fetch();
 
-        return new self;
+        return new static;
     }
 
     /**
@@ -80,7 +81,7 @@ class User
         $stmt->execute();
         self::$user = $stmt->fetch();
 
-        return new self;
+        return new static;
     }
 
     /**
@@ -99,9 +100,15 @@ class User
         $stmt->execute();
         self::$user = $stmt->fetch();
 
-        return new self;
+        return new static;
     }
 
+    /**
+     * Get the id, name and email of the specified user.
+     *
+     * Get all columns from the user's row in the users table.
+     * Only password and csrf_token are not returned.
+     */
     public static function getAll(): array
     {
         return array(
@@ -111,26 +118,51 @@ class User
         );
     }
 
+    /**
+     * Get the id of the user or return a default value.
+     *
+     * @return int
+     */
     public static function getId(): int
     {
         return self::$user['id'] ?? 0;
     }
 
+    /**
+     * Get the name of the user or return a default value.
+     *
+     * @return string
+     */
     public static function getName(): string
     {
         return self::$user['name'] ?? '';
     }
 
+    /**
+     * Get the email of the user or return a default value.
+     *
+     * @return string
+     */
     public static function getEmail(): string
     {
         return self::$user['email'] ?? '';
     }
 
+    /**
+     * Get the password of the user or return a default value.
+     *
+     * @return string
+     */
     public static function getPassword(): string
     {
         return self::$user['password'] ?? '';
     }
 
+    /**
+     * Get the CSRF token of the user or return a default value.
+     *
+     * @return string
+     */
     public static function getToken(): string
     {
         return self::$user['csrf_token'] ?? '';
@@ -160,7 +192,6 @@ class User
             $stmt->bindParam(':password', $password);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $e) {
-            var_dump($e->getMessage());
             return false;
         }
     }
@@ -189,7 +220,9 @@ class User
     /**
      * Logs the user in to the application.
      *
-     * User logs in with their username and password
+     * User logs in with their username and password.
+     *
+     * @return bool
      */
     public static function login(): bool
     {

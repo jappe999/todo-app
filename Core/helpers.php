@@ -57,7 +57,7 @@ function view(string $name, array $params = array()): string
  */
 function error(string $code): string
 {
-    header('HTTP/1.0 404 Not Found');
+    http_response_code($code);
     $fileName = $code . '.view.php';
     $path = ERROR_VIEWS_PATH . $fileName;
     return getContent($path);

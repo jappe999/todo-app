@@ -49,7 +49,7 @@ class File
         $this->id = $id;
 
         if (!empty($id) && $getRow) {
-            $query = "SELECT name, content FROM files WHERE id=:file_id";
+            $query = "SELECT name, content, task_id FROM files WHERE id=:file_id";
             $stmt  = DB::prepare($query);
 
             $stmt->bindParam(':file_id', $this->id);
@@ -58,6 +58,7 @@ class File
             $file          = $stmt->fetch();
             $this->name    = $file['name'];
             $this->content = $file['content'];
+            $this->taskId  = $file['task_id'];
         }
     }
 
@@ -112,7 +113,15 @@ class File
      */
     public function getId(): int
     {
-        return $this->id;
+        return $this->id ?? 0;
+    }
+
+    /**
+     * Get the corresponding task id.
+     */
+    public function getTaskId(): int
+    {
+        return $this->taskId ?? 0;
     }
 
     /**
@@ -123,7 +132,7 @@ class File
     public function getName(): string
     {
         // Failsafe if someone uses only digits.
-        return (string) $this->name;
+        return (string) $this->name ?? '';
     }
 
     /**

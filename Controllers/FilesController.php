@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Models\User as User;
+use Models\Task as Task;
 use Models\File as File;
 use Core\Database as DB;
 use Core\Request as Request;
@@ -67,14 +68,26 @@ class FilesController extends Controller
         $stmt->bindParam(':id', $fileId);
         $stmt->execute();
 
-        $content = $stmt->fetch()['content'];
+        $content = $stmt->fetch();
+
+        // Check if content exists.
+        if ($content) $content = $content['content'];
+        else return error('404');
+
+        // Remove dumb data.
         $content = substr($content, 5);
+
+        // Check if user has the rights to see this file.
+        $file = new File($fileId);
+        if (!$this->hasRights($file)) {
+            return error('403');
+        }
 
         // Strip base64 content and set header.
         $content = preg_replace_callback(
                        '/^([a-z0-9\-\_]+\/[a-z0-9\-\_]+)(;base64,){1}/',
                        function($matches) {
-                            header("Content-Type:" . $matches[1]);
+                           header("Content-Type:" . $matches[1]);
                            return '';
                        },
                        $content
@@ -106,6 +119,10 @@ class FilesController extends Controller
         // Actual processing of the file.
         $file = new File($file['id']);
 
+        if (!$this->hasRights($file)) {
+            return error('403');
+        }
+
         if ($file->getName() !== $file['name']) {
             $nameSet = $file->setName($file['name']);
         }
@@ -126,18 +143,30 @@ class FilesController extends Controller
         return json_encode(compact('status', 'data'));
     }
 
+    public function hasRights($file): bool
+    {
+        $task     = Task::get($file->getTaskId());
+        $creator  = $task->getCreator()->getId();
+        $assignee = $task->getAssignee()->getId();
+
+        return ($_SESSION['id'] == $creator|| $_SESSION['id'] == $assignee);
+    }
+
     /**
-     * undocumented function summary
+     * Delete file by id.
      *
-     * Undocumented function long description
+     * Delete file by the id given in the POST headers.
      *
-     * @param array $file
-     * @return return type
+     * @return string
      */
     public function delete(): string
     {
         $fileId = Request::getParams()->get('id');
-        $file = new File($fileId, false);
+        $file   = new File($fileId);
+
+        if (!$this->hasRights($file)) {
+            return error('403');
+        }
 
         if ($file->delete()) {
             // Just some hardcoded string.

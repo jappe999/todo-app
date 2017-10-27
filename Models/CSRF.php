@@ -22,6 +22,8 @@ class CSRF
 
     /**
      * Get the token from the session global.
+     *
+     * @return string
      */
     public static function getToken()
     {
