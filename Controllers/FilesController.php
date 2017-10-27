@@ -143,7 +143,13 @@ class FilesController extends Controller
         return json_encode(compact('status', 'data'));
     }
 
-    public function hasRights($file): bool
+    /**
+     * Checks if user has the rights to rad, update or delete the file.
+     *
+     * @param File $file
+     * @return bool
+     */
+    public function hasRights(File $file): bool
     {
         $task     = Task::get($file->getTaskId());
         $creator  = $task->getCreator()->getId();
